@@ -37,7 +37,7 @@ public class ChessBoardTest {
 		assertThat( chessBoard ).isNotNull();
 
 		String name = chessBoard.getName();
-		assertThat( name ).isNotNull();
+		assertThat( name ).isEqualTo( "ChessBoard" );
 	}
 
 }
