@@ -6,8 +6,6 @@ import javax.swing.JPanel;
 public class ChessBoard extends JPanel {
 	
 	public ChessBoard() {
-//		super();
-		
 		setName( "ChessBoard" );
 	}
 
