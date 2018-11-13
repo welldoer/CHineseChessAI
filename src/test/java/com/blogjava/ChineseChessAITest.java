@@ -34,6 +34,7 @@ public class ChineseChessAITest {
 	@Test
 	public void test() {
 		assertThat( chineseChessAI ).isNotNull();
+		window.panel( "ChessBoard" ).requireVisible();
 	}
 
 }
