@@ -1,6 +1,7 @@
 package com.blogjava;
 
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -12,6 +13,7 @@ import javax.swing.JPanel;
 public class ChessBoard extends JPanel {
 	private URL urlImgBoard;
 	private Image imgBoard;
+	private Position[] positions;
 	
 	public ChessBoard() {
 		setName( "ChessBoard" );
@@ -19,7 +21,14 @@ public class ChessBoard extends JPanel {
 		urlImgBoard = getClass().getClassLoader().getResource( "board.jpg" );
 		imgBoard = Toolkit.getDefaultToolkit().getImage( urlImgBoard );
 		
-		add( new Position( 0 ) );
+		FlowLayout flowLayout = new FlowLayout();
+		setLayout( flowLayout );
+		positions = new Position[ 90 ];
+		for( int i = 0; i < 90; i++ ) {
+			Position position = new Position( i );
+			positions[ i ] = position;
+			add( position );
+		}
 	}
 
 	@Override
