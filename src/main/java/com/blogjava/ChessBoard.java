@@ -22,6 +22,8 @@ public class ChessBoard extends JPanel {
 		imgBoard = Toolkit.getDefaultToolkit().getImage( urlImgBoard );
 		
 		FlowLayout flowLayout = new FlowLayout();
+		flowLayout.setHgap( 0 );
+		flowLayout.setVgap( 0 );
 		setLayout( flowLayout );
 		positions = new Position[ 90 ];
 		for( int i = 0; i < 90; i++ ) {

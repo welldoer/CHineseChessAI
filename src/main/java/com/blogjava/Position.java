@@ -22,6 +22,8 @@ public class Position extends JPanel {
 		imgPosition = new Image[ 2 ];
 		imgPosition[ 0 ] = Toolkit.getDefaultToolkit().getImage( urlImgPosition[ 0 ] );
 		imgPosition[ 1 ] = Toolkit.getDefaultToolkit().getImage( urlImgPosition[ 1 ] );
+		
+		setOpaque( false );
 	}
 
 	@Override
