@@ -22,7 +22,7 @@ public class PositionTest {
 
 	@Before
 	public void setUp() throws Exception {
-		position = GuiActionRunner.execute(() -> new Position() );
+		position = GuiActionRunner.execute(() -> new Position( 0 ) );
 		window = showInFrame( position );
 		window.show();
 	}
@@ -35,6 +35,7 @@ public class PositionTest {
 	@Test
 	public void test() {
 		assertThat( position ).isNotNull();
+		window.panel( "position_0" ).requireVisible();
 	}
 
 }
