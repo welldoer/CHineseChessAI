@@ -18,6 +18,8 @@ public class ChessBoard extends JPanel {
 		
 		urlImgBoard = getClass().getClassLoader().getResource( "board.jpg" );
 		imgBoard = Toolkit.getDefaultToolkit().getImage( urlImgBoard );
+		
+		add( new Position( 0 ) );
 	}
 
 	@Override

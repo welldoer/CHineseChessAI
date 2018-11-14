@@ -38,6 +38,8 @@ public class ChessBoardTest {
 
 		String name = chessBoard.getName();
 		assertThat( name ).isEqualTo( "ChessBoard" );
+
+		window.panel( "position_0" ).requireVisible();
 	}
 
 }
