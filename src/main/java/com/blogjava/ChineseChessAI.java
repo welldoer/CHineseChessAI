@@ -10,6 +10,7 @@ public class ChineseChessAI extends JFrame {
 		chessBoard = new ChessBoard();
 		add( chessBoard );
 		
+		setResizable( false );
 		setVisible( true );
 		pack();
 		setDefaultCloseOperation( DISPOSE_ON_CLOSE );
