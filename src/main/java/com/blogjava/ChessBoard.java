@@ -31,8 +31,6 @@ public class ChessBoard extends JPanel {
 			positions[ i ] = position;
 			add( position );
 		}
-		
-		positions[ 1 ].setPiece( new Piece( PieceType.KnightBlack, 1 ) );
 	}
 
 	public ChessBoard loadFromFen( FenRecord fenRecord ) {
@@ -56,5 +54,9 @@ public class ChessBoard extends JPanel {
 	
 	public Dimension getPreferredSize() {
 		return new Dimension( 521, 577 );
+	}
+
+	public Position[] getPositions() {
+		return positions;
 	}
 }

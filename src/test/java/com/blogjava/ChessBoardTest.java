@@ -51,10 +51,17 @@ public class ChessBoardTest {
 	}
 
 	@Test
-	public void testLoadFromFen2() {
+	public void testMoveRook() {
 		FenRecord fenSimpleRecord = new FenRecord( "1r7/2c6/9/9/9/9/9/9/9/9 b - - 20 50" );
 		
 		chessBoard.loadFromFen( fenSimpleRecord );
 		window.panel( "position_0" ).requireVisible();
+		
+		Position[] positions = chessBoard.getPositions();
+		assertThat( positions[ 1 ].getPiece().getType() ).isEqualTo( PieceType.RookBlack );
+		window.panel( "position_1" ).click();
+//		window.dialog().button().click();
+		window.panel( "position_10" ).click();
+		
 	}
 }

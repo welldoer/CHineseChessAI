@@ -40,7 +40,7 @@ public class PositionTest {
 
 		assertThat( position.isSelected() ).isEqualTo( false );
 		window.panel( "position_0" ).click();
-		window.dialog().button().click();
+//		window.dialog().button().click();
 		assertThat( position.isSelected() ).isEqualTo( true );
 	}
 
@@ -53,7 +53,9 @@ public class PositionTest {
 		assertThat( position.getPiece().getType() ).isEqualTo( PieceType.AdvisorBlack );
 		
 		window.panel().click();
-		window.dialog().label( "OptionPane.label" ).requireText( "你点击了【黑士】！" );
-		window.dialog().button().click();
+//		window.dialog().label( "OptionPane.label" ).requireText( "你点击了【黑士】！" );
+//		window.dialog().button().click();
+		
+		assertThat( position.isSelected() ).isTrue();
 	}
 }
