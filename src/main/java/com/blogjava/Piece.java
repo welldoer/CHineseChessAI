@@ -27,4 +27,8 @@ public class Piece {
 	public Image getImage() {
 		return imgPiece;
 	}
+
+	public String getName() {
+		return pieceType.getName();
+	}
 }

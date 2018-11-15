@@ -56,7 +56,7 @@ public class Position extends JPanel {
 	class MouseMonitor extends MouseAdapter {
 
 		public void mousePressed( MouseEvent e ) {
-			String msg = "你点击了【" + "棋盘"  + "】！";
+			String msg = "你点击了【" + ( piece != null ? piece.getName() : "棋盘" )  + "】！";
 			JOptionPane.showMessageDialog( Position.this, msg );
 			
 			isSelected = ! isSelected;

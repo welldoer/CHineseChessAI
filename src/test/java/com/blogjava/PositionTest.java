@@ -51,5 +51,9 @@ public class PositionTest {
 		position.setOpaque( true );
 
 		assertThat( position.getPiece().getType() ).isEqualTo( PieceType.AdvisorBlack );
+		
+		window.panel().click();
+		window.dialog().label( "OptionPane.label" ).requireText( "你点击了【黑士】！" );
+		window.dialog().button().click();
 	}
 }
