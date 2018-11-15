@@ -18,6 +18,10 @@ public class FenRecordTest {
 	public void testFenSimpleRecord() {
 		assertThat( fenOrigRecord.isRedGo() ).isEqualTo( true );
 		assertThat( fenSimpleRecord.isRedGo() ).isEqualTo( false );
+		
+		assertThat( fenSimpleRecord.fetchNextPiece().getType() ).isEqualTo( PieceType.RookBlack );
+		assertThat( fenSimpleRecord.fetchNextPiece().getType() ).isEqualTo( PieceType.CannonBlack );
+		assertThat( fenSimpleRecord.fetchNextPiece() ).isNull();
 	}
 
 }
