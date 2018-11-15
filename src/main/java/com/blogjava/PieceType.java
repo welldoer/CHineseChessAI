@@ -1,29 +1,38 @@
 package com.blogjava;
 
-import java.util.function.IntPredicate;
-
 public enum PieceType {
-	KingRed;
+	KingRed			( 'K', "rk", "红帥", PieceBasicType.King );
+	
+	private char type;
+	private String gifName;
+	private String name;
+	private PieceBasicType pieceBasicType;
 
+	PieceType( char type, String gifName, String name, PieceBasicType pieceBasicType ) {
+		this.type = type;
+		this.gifName = gifName;
+		this.name = name;
+		this.pieceBasicType = pieceBasicType;
+	}
+	
 	public char getType() {
-		return 'K';
+		return type;
 	}
 
 	public String getGifName() {
-		return "rk";
+		return gifName;
 	}
 
 	public String getName() {
-		return "红帥";
+		return name;
 	}
 
 	public PieceBasicType getBasicType() {
-		return PieceBasicType.King;
+		return pieceBasicType;
 	}
 
 }
 
 enum PieceBasicType {
 	King;
-
 }
