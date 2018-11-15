@@ -4,14 +4,18 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.net.URL;
 
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class Position extends JPanel {
 	private URL urlImgPosition[];
 	private Image imgPosition[];
+	private boolean isSelected = false;
 	
 	public Position( int pos ) {
 		setName( "position_" + pos );
@@ -24,13 +28,15 @@ public class Position extends JPanel {
 		imgPosition[ 1 ] = Toolkit.getDefaultToolkit().getImage( urlImgPosition[ 1 ] );
 		
 		setOpaque( false );
+		
+		addMouseListener( new MouseMonitor() );
 	}
 
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent( g );
 
-		g.drawImage( imgPosition[ 1 ], 0, 0, this );
+		g.drawImage( imgPosition[ isSelected ? 1 : 0 ], 0, 0, this );
 	}
 
 	@Override
@@ -38,4 +44,19 @@ public class Position extends JPanel {
 		return new Dimension( 57, 57 );
 	}
 
+	public boolean isSelected() {
+		return isSelected;
+	}
+
+	class MouseMonitor extends MouseAdapter {
+
+		public void mousePressed( MouseEvent e ) {
+			String msg = "你点击了【" + "棋盘"  + "】！";
+			JOptionPane.showMessageDialog( Position.this, msg );
+			
+			isSelected = ! isSelected;
+
+			repaint();
+		}
+	}
 }

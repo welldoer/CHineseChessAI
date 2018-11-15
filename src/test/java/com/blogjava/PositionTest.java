@@ -36,6 +36,11 @@ public class PositionTest {
 	public void test() {
 		assertThat( position ).isNotNull();
 		window.panel( "position_0" ).requireVisible();
+
+		assertThat( position.isSelected() ).isEqualTo( false );
+		window.panel( "position_0" ).click();
+		window.dialog().button().click();
+		assertThat( position.isSelected() ).isEqualTo( true );
 	}
 
 }
