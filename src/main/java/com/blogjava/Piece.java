@@ -44,6 +44,7 @@ public class Piece {
 		int diffPos = Math.abs( newPos - posInBoard );
 		int diffCol = Math.abs( newPos % 9 - posInBoard % 9 );
 		int diffRow = Math.abs( newPos / 9 - posInBoard / 9 );
+		int diffCenter = Math.abs( newPos % 9 - 4 );
 
 		switch( pieceType.getBasicType() ) {
 		case Cannon :	/* 炮 */
@@ -63,7 +64,13 @@ public class Piece {
 					canMove = false;
 			}
 			break;
-
+		case Advisor:	/* 士 */
+			if( ( diffPos == 8 || diffPos == 10 ) && diffCenter <= 1 &&
+					( ( pieceType == PieceType.AdvisorBlack && newPos / 9 <= 2 ) ||
+						( pieceType == PieceType.AdvisorRed && newPos / 9 >= 7 ) ) ) {
+				canMove = true;
+			}
+			break;
 		default:
 			break;
 		}
