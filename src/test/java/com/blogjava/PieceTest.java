@@ -54,4 +54,25 @@ public class PieceTest {
 		assertThat( piece.canMoveTo( 10 ) ).isEqualTo( false );
 	}
 
+	@Test
+	public void testPieceBishopMove() {
+		piece = new Piece( PieceType.BishopBlack, 22 );
+		assertThat( piece.canMoveTo(  2 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo(  6 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 38 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 42 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 13 ) ).isEqualTo( false );
+		piece = new Piece( PieceType.BishopBlack, 38 );
+		assertThat( piece.canMoveTo( 54 ) ).isEqualTo( false );
+		assertThat( piece.canMoveTo( 58 ) ).isEqualTo( false );
+		piece = new Piece( PieceType.BishopRed, 67 );
+		assertThat( piece.canMoveTo( 47 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 51 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 83 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 87 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 70 ) ).isEqualTo( false );
+		piece = new Piece( PieceType.BishopRed, 51 );
+		assertThat( piece.canMoveTo( 31 ) ).isEqualTo( false );
+		assertThat( piece.canMoveTo( 35 ) ).isEqualTo( false );
+	}
 }

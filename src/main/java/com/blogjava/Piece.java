@@ -41,7 +41,7 @@ public class Piece {
 
 	public boolean canMoveTo(int newPos) {
 		boolean canMove = false;
-		int diffPos = newPos - posInBoard;
+		int diffPos = Math.abs( newPos - posInBoard );
 		int diffCol = Math.abs( newPos % 9 - posInBoard % 9 );
 		int diffRow = Math.abs( newPos / 9 - posInBoard / 9 );
 
@@ -55,6 +55,13 @@ public class Piece {
 			if( ( ( diffPos %  7 == 0 || diffPos % 11 == 0 ) && diffRow == 1 ) ||
 				( ( diffPos % 17 == 0 || diffPos % 19 == 0 ) && diffRow == 2 ) )
 				canMove = true;
+			break;
+		case Bishop:	/* 相 */
+			if( diffPos == 16 || diffPos == 20 ) {
+				canMove = true;
+				if( newPos / 45 != posInBoard / 45 )
+					canMove = false;
+			}
 			break;
 
 		default:
