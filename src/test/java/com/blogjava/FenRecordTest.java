@@ -17,7 +17,7 @@ public class FenRecordTest {
 	@Test
 	public void testFenSimpleRecord() {
 		assertThat( fenOrigRecord.isRedGo() ).isEqualTo( true );
-		assertThat( fenSimpleRecord.isRedGo() ).isEqualTo( true );
+		assertThat( fenSimpleRecord.isRedGo() ).isEqualTo( false );
 	}
 
 }
