@@ -78,6 +78,15 @@ public class Piece {
 				canMove = true;
 			}
 			break;
+		case Pawn:	/* 兵 */
+			if( ( ( pieceType == PieceType.PawnBlack ) &&
+					( ( posInBoard / 45 < 1 && diffPos == 9 && newPos > posInBoard ) ||
+						( posInBoard / 45 >= 1 && ( diffPos == 1 || diffPos == 9 ) && newPos >= posInBoard - 1 ) ) ) ||
+				( ( pieceType == PieceType.PawnRed ) &&
+						( ( posInBoard / 45 >= 1 && diffPos == 9 && newPos < posInBoard ) ||
+								( posInBoard / 45 < 1 && ( diffPos == 1 || diffPos == 9 ) && newPos <= posInBoard + 1 ) ) ) )
+				canMove = true;
+			break;
 		default:
 			break;
 		}

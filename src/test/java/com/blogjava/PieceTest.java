@@ -119,4 +119,28 @@ public class PieceTest {
 		assertThat( piece.canMoveTo( 58 ) ).isEqualTo( false );
 	}
 
+	@Test
+	public void testPiecePawnMove() {
+		piece = new Piece( PieceType.PawnBlack, 27 );
+		assertThat( piece.canMoveTo( 36 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 18 ) ).isEqualTo( false );
+		assertThat( piece.canMoveTo( 28 ) ).isEqualTo( false );
+		piece = new Piece( PieceType.PawnBlack, 46 );
+		assertThat( piece.canMoveTo( 45 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 47 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 55 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 38 ) ).isEqualTo( false );
+		assertThat( piece.canMoveTo( 56 ) ).isEqualTo( false );
+		piece = new Piece( PieceType.PawnRed, 47 );
+		assertThat( piece.canMoveTo( 38 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 46 ) ).isEqualTo( false );
+		assertThat( piece.canMoveTo( 48 ) ).isEqualTo( false );
+		piece = new Piece( PieceType.PawnRed, 38 );
+		assertThat( piece.canMoveTo( 29 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 37 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 39 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 20 ) ).isEqualTo( false );
+		assertThat( piece.canMoveTo( 56 ) ).isEqualTo( false );
+	}
+
 }
