@@ -42,4 +42,19 @@ public class ChessBoardTest {
 		window.panel( "position_0" ).requireVisible();
 	}
 
+	@Test
+	public void testLoadFromFen1() {
+		FenRecord fenOrigRecord = new FenRecord( "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1" );
+		
+		chessBoard.loadFromFen( fenOrigRecord );
+		window.panel( "position_0" ).requireVisible();
+	}
+
+	@Test
+	public void testLoadFromFen2() {
+		FenRecord fenSimpleRecord = new FenRecord( "1r7/2c6/9/9/9/9/9/9/9/9 b - - 20 50" );
+		
+		chessBoard.loadFromFen( fenSimpleRecord );
+		window.panel( "position_0" ).requireVisible();
+	}
 }

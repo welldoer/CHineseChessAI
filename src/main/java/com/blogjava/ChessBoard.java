@@ -35,6 +35,19 @@ public class ChessBoard extends JPanel {
 		positions[ 1 ].setPiece( new Piece( PieceType.KnightBlack, 1 ) );
 	}
 
+	public ChessBoard loadFromFen( FenRecord fenRecord ) {
+		while( true ) {
+			Piece piece = fenRecord.fetchNextPiece();
+			if( piece != null ) {
+				int posInBoard = piece.getPosInBoard();
+				positions[ posInBoard ].setPiece( piece );
+			} else
+				break;
+		}
+		
+		return this;
+	}
+	
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent( g );

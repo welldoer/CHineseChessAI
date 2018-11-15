@@ -17,7 +17,14 @@ public class ChineseChessAI extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		new ChineseChessAI();
+		ChineseChessAI chineseChessAI = new ChineseChessAI();
+		
+		FenRecord fenRecord = new FenRecord( "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1" );
+		chineseChessAI.loadFromFen( fenRecord );
+	}
+
+	public void loadFromFen(FenRecord fenRecord) {
+		chessBoard.loadFromFen( fenRecord );
 	}
 
 }
