@@ -8,7 +8,7 @@ public class FenRecord {
 	private int currentPeaceStep;
 	private int totalStep;
 	private int idxFenSequence = 0;
-	private int posChessBoard = 0;
+	private int posInBoard = 0;
 
 	public FenRecord( String strFen ) {
 		String[] fenGroup = strFen.split( " " );
@@ -28,15 +28,15 @@ public class FenRecord {
 		while( idxFenSequence < fenSequence.length() ) {
 			char ch = fenSequence.charAt( idxFenSequence );
 			if( Character.isDigit( ch ) ) 
-				posChessBoard += Character.getNumericValue( ch );
+				posInBoard += Character.getNumericValue( ch );
 			else if( ch == '/' ) {
-				if( posChessBoard % 9 != 0 )
-					System.out.println( "Warning: Fen format error - " + posChessBoard + "  " + fenSequence );
+				if( posInBoard % 9 != 0 )
+					System.out.println( "Warning: Fen format error - " + posInBoard + "  " + fenSequence );
 			}
 			for( PieceType pieceType : PieceType.values() ) {
 				if( ch == pieceType.getType() ) {
-					piece = new Piece( pieceType );
-					posChessBoard++;
+					piece = new Piece( pieceType, posInBoard );
+					posInBoard++;
 					break;
 				}
 			}

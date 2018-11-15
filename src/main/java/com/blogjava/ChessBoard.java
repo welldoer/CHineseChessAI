@@ -32,7 +32,7 @@ public class ChessBoard extends JPanel {
 			add( position );
 		}
 		
-		positions[ 1 ].setPiece( new Piece( PieceType.KnightBlack ) );
+		positions[ 1 ].setPiece( new Piece( PieceType.KnightBlack, 1 ) );
 	}
 
 	@Override

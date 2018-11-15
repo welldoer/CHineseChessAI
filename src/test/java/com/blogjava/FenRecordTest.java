@@ -19,9 +19,16 @@ public class FenRecordTest {
 		assertThat( fenOrigRecord.isRedGo() ).isEqualTo( true );
 		assertThat( fenSimpleRecord.isRedGo() ).isEqualTo( false );
 		
-		assertThat( fenSimpleRecord.fetchNextPiece().getType() ).isEqualTo( PieceType.RookBlack );
-		assertThat( fenSimpleRecord.fetchNextPiece().getType() ).isEqualTo( PieceType.CannonBlack );
-		assertThat( fenSimpleRecord.fetchNextPiece() ).isNull();
+		Piece piece = fenSimpleRecord.fetchNextPiece();
+		assertThat( piece.getType() ).isEqualTo( PieceType.RookBlack );
+		assertThat( piece.getPosInBoard() ).isEqualTo( 1 );
+		
+		piece = fenSimpleRecord.fetchNextPiece();
+		assertThat( piece.getType() ).isEqualTo( PieceType.CannonBlack );
+		assertThat( piece.getPosInBoard() ).isEqualTo( 11 );
+
+		piece = fenSimpleRecord.fetchNextPiece();
+		assertThat( piece ).isNull();
 	}
 
 }

@@ -46,7 +46,7 @@ public class PositionTest {
 
 	@Test
 	public void testOnePiece() {
-		piece = new Piece( PieceType.AdvisorBlack );
+		piece = new Piece( PieceType.AdvisorBlack, 0 );
 		position.setPiece( piece );
 		position.setOpaque( true );
 
