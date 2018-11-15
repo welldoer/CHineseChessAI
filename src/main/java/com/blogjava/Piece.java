@@ -71,6 +71,13 @@ public class Piece {
 				canMove = true;
 			}
 			break;
+		case King:	/* 士 */
+			if( ( diffCol == 0 || diffRow == 0 ) && diffCenter <= 1 &&
+					( ( pieceType == PieceType.KingBlack && newPos / 9 <= 2 ) ||
+						( pieceType == PieceType.KingRed && newPos / 9 >= 7 ) ) ) {
+				canMove = true;
+			}
+			break;
 		default:
 			break;
 		}

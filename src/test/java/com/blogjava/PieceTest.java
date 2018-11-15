@@ -92,4 +92,31 @@ public class PieceTest {
 		assertThat( piece.canMoveTo( 58 ) ).isEqualTo( false );
 	}
 
+	@Test
+	public void testPieceKingMove() {
+		piece = new Piece( PieceType.KingBlack, 4 );
+		assertThat( piece.canMoveTo(  3 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo(  5 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo(  13 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo(  12 ) ).isEqualTo( false );
+		piece = new Piece( PieceType.KingBlack, 13 );
+		assertThat( piece.canMoveTo(  4 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 12 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 14 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 22 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 21 ) ).isEqualTo( false );
+		piece = new Piece( PieceType.KingBlack, 23 );
+		assertThat( piece.canMoveTo( 14 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 22 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 13 ) ).isEqualTo( false );
+		piece = new Piece( PieceType.KingRed, 67 );
+		assertThat( piece.canMoveTo( 66 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 68 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 76 ) ).isEqualTo( true );
+		piece = new Piece( PieceType.KingRed, 85 );
+		assertThat( piece.canMoveTo( 84 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 86 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 58 ) ).isEqualTo( false );
+	}
+
 }
