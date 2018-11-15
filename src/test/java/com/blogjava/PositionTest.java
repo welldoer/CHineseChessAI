@@ -14,6 +14,7 @@ import org.junit.Test;
 public class PositionTest {
 	private Position position;
 	private FrameFixture window;
+	private Piece piece;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -33,7 +34,7 @@ public class PositionTest {
 	}
 
 	@Test
-	public void test() {
+	public void testPosition() {
 		assertThat( position ).isNotNull();
 		window.panel( "position_0" ).requireVisible();
 
@@ -43,4 +44,12 @@ public class PositionTest {
 		assertThat( position.isSelected() ).isEqualTo( true );
 	}
 
+	@Test
+	public void testOnePiece() {
+		piece = new Piece( PieceType.AdvisorBlack );
+		position.setPiece( piece );
+		position.setOpaque( true );
+
+		assertThat( position.getPiece().getType() ).isEqualTo( PieceType.AdvisorBlack );
+	}
 }

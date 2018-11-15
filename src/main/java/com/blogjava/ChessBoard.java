@@ -31,6 +31,8 @@ public class ChessBoard extends JPanel {
 			positions[ i ] = position;
 			add( position );
 		}
+		
+		positions[ 1 ].setPiece( new Piece( PieceType.KnightBlack ) );
 	}
 
 	@Override

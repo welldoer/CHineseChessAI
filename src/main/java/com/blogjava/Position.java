@@ -16,6 +16,7 @@ public class Position extends JPanel {
 	private URL urlImgPosition[];
 	private Image imgPosition[];
 	private boolean isSelected = false;
+	private Piece piece = null;
 	
 	public Position( int pos ) {
 		setName( "position_" + pos );
@@ -37,6 +38,10 @@ public class Position extends JPanel {
 		super.paintComponent( g );
 
 		g.drawImage( imgPosition[ isSelected ? 1 : 0 ], 0, 0, this );
+		
+		if( piece != null ) {
+			g.drawImage( piece.getImage(), 0, 0, this);
+		}
 	}
 
 	@Override
@@ -58,5 +63,15 @@ public class Position extends JPanel {
 
 			repaint();
 		}
+	}
+
+	public Position setPiece(Piece piece) {
+		this.piece = piece;
+		
+		return this;
+	}
+
+	public Piece getPiece() {
+		return piece;
 	}
 }
