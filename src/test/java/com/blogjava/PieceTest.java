@@ -40,4 +40,18 @@ public class PieceTest {
 		assertThat( piece.canMoveTo( 88 ) ).isEqualTo( false );
 	}
 
+	@Test
+	public void testPieceKnightMove() {
+		piece = new Piece( PieceType.KnightBlack, 20 );
+		assertThat( piece.canMoveTo(  1 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo(  3 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo(  9 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 13 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 27 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 31 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 37 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 39 ) ).isEqualTo( true );
+		assertThat( piece.canMoveTo( 10 ) ).isEqualTo( false );
+	}
+
 }

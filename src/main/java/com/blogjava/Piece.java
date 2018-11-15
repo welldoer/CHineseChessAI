@@ -41,12 +41,19 @@ public class Piece {
 
 	public boolean canMoveTo(int newPos) {
 		boolean canMove = false;
-		int val = newPos - posInBoard;
+		int diffPos = newPos - posInBoard;
+		int diffCol = Math.abs( newPos % 9 - posInBoard % 9 );
+		int diffRow = Math.abs( newPos / 9 - posInBoard / 9 );
 
 		switch( pieceType.getBasicType() ) {
 		case Cannon :	/* 炮 */
 		case Rook:		/* 车 */
-			if( ( val % 9 == 0 ) || ( posInBoard / 9 == newPos / 9 ) )
+			if( ( diffCol == 0 ) || diffRow == 0 )
+				canMove = true;
+			break;
+		case Knight:	/* 马 */
+			if( ( ( diffPos %  7 == 0 || diffPos % 11 == 0 ) && diffRow == 1 ) ||
+				( ( diffPos % 17 == 0 || diffPos % 19 == 0 ) && diffRow == 2 ) )
 				canMove = true;
 			break;
 
