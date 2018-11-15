@@ -20,5 +20,14 @@ public class PieceTypeTest {
 		assertThat( pieceType.getName() ).isEqualTo( "红帥" );
 		assertThat( pieceType.getBasicType() ).isEqualTo( PieceBasicType.King );
 	}
+		
+	@Test
+	public void testAnotherPieceType() {
+		pieceType = PieceType.BishopBlack;
+		assertThat( pieceType.getType() ).isEqualTo( 'b' );
+		assertThat( pieceType.getGifName() ).isEqualTo( "bb" );
+		assertThat( pieceType.getName() ).isEqualTo( "黑象" );
+		assertThat( pieceType.getBasicType() ).isEqualTo( PieceBasicType.Bishop );
+	}
 
 }
