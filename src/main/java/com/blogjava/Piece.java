@@ -38,4 +38,22 @@ public class Piece {
 	public int getPosInBoard() {
 		return posInBoard;
 	}
+
+	public boolean canMoveTo(int newPos) {
+		boolean canMove = false;
+		int val = newPos - posInBoard;
+
+		switch( pieceType.getBasicType() ) {
+		case Cannon :	/* 炮 */
+		case Rook:		/* 车 */
+			if( ( val % 9 == 0 ) || ( posInBoard / 9 == newPos / 9 ) )
+				canMove = true;
+			break;
+
+		default:
+			break;
+		}
+		
+		return canMove;
+	}
 }
