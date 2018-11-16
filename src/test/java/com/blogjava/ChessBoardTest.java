@@ -60,8 +60,13 @@ public class ChessBoardTest {
 		Position[] positions = chessBoard.getPositions();
 		assertThat( positions[ 1 ].getPiece().getType() ).isEqualTo( PieceType.RookBlack );
 		window.panel( "position_1" ).click();
+		assertThat( chessBoard.getSelectedPos() ).isEqualTo( 1 );
 //		window.dialog().button().click();
 		window.panel( "position_10" ).click();
+		assertThat( positions[ 1 ].getPiece() ).isNull();
+		assertThat( positions[ 10 ].getPiece().getType() ).isEqualTo( PieceType.RookBlack );
 		
+		window.panel( "position_11" ).click();
+		assertThat( chessBoard.getSelectedPos() ).isEqualTo( 11 );
 	}
 }

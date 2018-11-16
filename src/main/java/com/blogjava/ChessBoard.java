@@ -14,6 +14,8 @@ public class ChessBoard extends JPanel {
 	private URL urlImgBoard;
 	private Image imgBoard;
 	private Position[] positions;
+	private int selectedPos = -1;
+	private int[] movedPos;
 	
 	public ChessBoard() {
 		setName( "ChessBoard" );
@@ -27,7 +29,7 @@ public class ChessBoard extends JPanel {
 		setLayout( flowLayout );
 		positions = new Position[ 90 ];
 		for( int i = 0; i < 90; i++ ) {
-			Position position = new Position( i );
+			Position position = new Position( this, i );
 			positions[ i ] = position;
 			add( position );
 		}
@@ -58,5 +60,43 @@ public class ChessBoard extends JPanel {
 
 	public Position[] getPositions() {
 		return positions;
+	}
+
+	public int getSelectedPos() {
+		return selectedPos;
+	}
+
+	public void clickPosition(int pos) {
+		if( movedPos != null ) {
+			positions[ movedPos[ 0 ] ].setSelected( false );
+			positions[ movedPos[ 1 ] ].setSelected( false );
+			
+			movedPos = null;
+			selectedPos = -1;
+		}
+		if( selectedPos != -1 ) {
+			if( selectedPos == pos )
+				selectedPos = -1;
+			else if( positions[ pos ].getPiece() == null ) {
+				System.out.println( "Old pos: " + selectedPos + ", New pos: " + pos + "." );
+				if( positions[ selectedPos ].getPiece().canMoveTo( pos ) ) {
+					Piece piece = positions[ selectedPos ].getPiece();
+					piece.setPosInBoard( pos );
+					positions[ pos ].setPiece( piece );
+					positions[ selectedPos ].setPiece( null );
+					
+					movedPos = new int[ 2 ];
+					movedPos[ 0 ] = selectedPos;
+					movedPos[ 1 ] = pos;
+				} else {
+					positions[ pos ].setSelected( false );
+				}
+			}
+		} else {
+			this.selectedPos = pos;
+			positions[ pos ].setSelected( true );
+		}
+
+		repaint();
 	}
 }

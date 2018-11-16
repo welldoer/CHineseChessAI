@@ -13,12 +13,24 @@ import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class Position extends JPanel {
+	private ChessBoard chessBoard = null;
+	private int pos;
 	private URL urlImgPosition[];
 	private Image imgPosition[];
 	private boolean isSelected = false;
 	private Piece piece = null;
 	
+	public Position( ChessBoard chessBoard, int pos ) {
+		this.chessBoard = chessBoard;
+		this.pos = pos;
+		buildPosition( pos );
+	}
+
 	public Position( int pos ) {
+		buildPosition(pos);
+	}
+
+	private void buildPosition(int pos) {
 		setName( "position_" + pos );
 		
 		urlImgPosition = new URL[ 2 ];
@@ -60,6 +72,10 @@ public class Position extends JPanel {
 //			JOptionPane.showMessageDialog( Position.this, msg );
 			
 			isSelected = ! isSelected;
+			
+			if( chessBoard != null ) {
+				chessBoard.clickPosition( Position.this.pos );
+			}
 
 			repaint();
 		}
@@ -73,5 +89,9 @@ public class Position extends JPanel {
 
 	public Piece getPiece() {
 		return piece;
+	}
+
+	public void setSelected( boolean state ) {
+		isSelected = state;
 	}
 }
