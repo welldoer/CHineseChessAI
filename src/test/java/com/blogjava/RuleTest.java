@@ -28,4 +28,23 @@ public class RuleTest {
 		assertThat( rule.canMovePiece( rook,  3 ) ).isFalse();
 	}
 
+	@Test
+	public void testRuleKnightBasicSteps() {
+		Piece rook = new Piece( PieceType.KnightBlack, 22 );
+		assertThat( rule.canMovePiece( rook,  3 ) ).isTrue();
+		assertThat( rule.canMovePiece( rook,  5 ) ).isTrue();
+		assertThat( rule.canMovePiece( rook, 11 ) ).isTrue();
+		assertThat( rule.canMovePiece( rook, 15 ) ).isTrue();
+		assertThat( rule.canMovePiece( rook, 29 ) ).isTrue();
+		assertThat( rule.canMovePiece( rook, 33 ) ).isTrue();
+		assertThat( rule.canMovePiece( rook, 39 ) ).isTrue();
+		assertThat( rule.canMovePiece( rook, 41 ) ).isTrue();
+	}
+	
+	@Test
+	public void testRuleKnightIncorrectSteps() {
+		Piece rook = new Piece( PieceType.KnightBlack, 22 );
+		assertThat( rule.canMovePiece( rook,  2 ) ).isFalse();
+	}
+
 }

@@ -6,6 +6,7 @@ public class Rule {
 		boolean canMove = false;
 		int oldPos = piece.getPosInBoard();
 		
+		int diffPos = Math.abs( newPos - oldPos );
 		int diffCol = Math.abs( newPos % 9 - oldPos % 9 );
 		int diffRow = Math.abs( newPos / 9 - oldPos / 9 );
 
@@ -13,6 +14,11 @@ public class Rule {
 		case Cannon :	/* 炮 */
 		case Rook:		/* 车 */
 			if( diffCol == 0 || diffRow == 0 )
+				canMove = true;
+			break;
+		case Knight:	/* 马 */
+			if( ( ( diffPos %  7 == 0 || diffPos % 11 == 0 ) && diffRow == 1 ) ||
+				( ( diffPos % 17 == 0 || diffPos % 19 == 0 ) && diffRow == 2 ) )
 				canMove = true;
 			break;
 		}

@@ -58,12 +58,8 @@ public class Piece {
 		switch( pieceType.getBasicType() ) {
 		case Cannon :	/* 炮 */
 		case Rook:		/* 车 */
-			canMove = rule.canMovePiece( this, newPos );
-			break;
 		case Knight:	/* 马 */
-			if( ( ( diffPos %  7 == 0 || diffPos % 11 == 0 ) && diffRow == 1 ) ||
-				( ( diffPos % 17 == 0 || diffPos % 19 == 0 ) && diffRow == 2 ) )
-				canMove = true;
+			canMove = rule.canMovePiece( this, newPos );
 			break;
 		case Bishop:	/* 相 */
 			if( diffPos == 16 || diffPos == 20 ) {
