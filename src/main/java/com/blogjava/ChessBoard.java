@@ -98,21 +98,34 @@ public class ChessBoard extends JPanel {
 				System.out.println( "SelectPos: " + selectedPos + ", pos: " + pos + ", booltmp: " + booltmp );
 				if( booltmp ) {
 					if( boolCanMove ) {
+						int begin, end, inc;
+						begin = selectedPos;
+						end = pos;
+						inc = 1;
+						if( selectedPos > pos ) {
+							begin = pos;
+							end = selectedPos;
+						}
 						switch( positions[ selectedPos ].getPiece().getBasicType() ) {
 						case Rook:
-							int begin = selectedPos;
-							int end = pos;
-							int inc = 1;
-							if( selectedPos > pos ) {
-								begin = pos;
-								end = selectedPos;
-							}
 							if( end - begin >= 9 )
 								inc = 9;
 							for( int i = begin + inc; i < end; i += inc ) {
 								if( positions[ i ].getPiece() != null )
 									boolReplace = false;
 							}
+							break;
+						case Cannon:
+							if( end - begin >= 9 )
+								inc = 9;
+							int num = 0;
+							for( int i = begin + inc; i < end; i += inc ) {
+								if( positions[ i ].getPiece() != null )
+									num++;
+							}
+							System.out.println( "num: " + num );
+							if( num != 1 )
+								boolReplace = false;
 							break;
 						default:
 							break;
