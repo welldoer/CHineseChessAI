@@ -20,6 +20,14 @@
 
 ~~6. 替换PieceTest中的棋子走法测试；~~
 
-6. 完整将旧的Piece走法检查改为Rule走法检查；
+~~6. 完整将旧的Piece走法检查改为Rule走法检查，并删除Piece中不再使用的走法检查方法；~~
 
-7. 在Rule规则类中支持步法的生成；
+7. 为了有效隔离GUI与非GUI测试，准备将GUI仅限制于ChessBoard及以上；
+
+7.1. 添加Tiles类来存放原有的Positions的非GUI信息；
+
+7.2. 支持从FEN类加载棋局信息至Tiles，故Tiles成为无GUI显示的完整象棋；
+
+7.3. 后续再将ChessBoard基于Tiles来完成GUI显示；
+
+8. 在Rule规则类中支持步法的生成；

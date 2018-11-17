@@ -75,7 +75,9 @@ public class ChessBoard extends JPanel {
 			selectedPos = -1;
 		}
 		if( selectedPos != -1 ) {
-			boolean boolCanMove = positions[ selectedPos ].getPiece().canMoveTo( pos );
+			Rule rule = new Rule();
+			Piece oldPiece = positions[ selectedPos ].getPiece();
+			boolean boolCanMove = rule.canMovePiece( oldPiece, pos );
 			if( boolCanMove ) {
 				boolCanMove = canMovePieceBetweenPositions( selectedPos, pos );
 			}

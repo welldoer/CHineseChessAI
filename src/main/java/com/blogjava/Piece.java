@@ -46,13 +46,4 @@ public class Piece {
 	public PieceSide getSide() {
 		return pieceType.getPieceSide();
 	}
-
-	public boolean canMoveTo(int newPos) {
-		boolean canMove = false;
-
-		Rule rule = new Rule();
-		canMove = rule.canMovePiece( this, newPos );
-
-		return canMove;
-	}
 }
