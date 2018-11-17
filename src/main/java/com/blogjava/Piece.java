@@ -54,11 +54,11 @@ public class Piece {
 		int diffRow = Math.abs( newPos / 9 - posInBoard / 9 );
 		int diffCenter = Math.abs( newPos % 9 - 4 );
 
+		Rule rule = new Rule();
 		switch( pieceType.getBasicType() ) {
 		case Cannon :	/* 炮 */
 		case Rook:		/* 车 */
-			if( ( diffCol == 0 ) || diffRow == 0 )
-				canMove = true;
+			canMove = rule.canMovePiece( this, newPos );
 			break;
 		case Knight:	/* 马 */
 			if( ( ( diffPos %  7 == 0 || diffPos % 11 == 0 ) && diffRow == 1 ) ||

@@ -14,8 +14,18 @@ public class RuleTest {
 	}
 
 	@Test
-	public void testRule() {
-		assertThat( rule ).isNotNull();
+	public void testRuleRookBasicSteps() {
+		Piece rook = new Piece( PieceType.RookBlack, 40 );
+		assertThat( rule.canMovePiece( rook,  4 ) ).isTrue();
+		assertThat( rule.canMovePiece( rook, 85 ) ).isTrue();
+		assertThat( rule.canMovePiece( rook, 36 ) ).isTrue();
+		assertThat( rule.canMovePiece( rook, 44 ) ).isTrue();
+	}
+	
+	@Test
+	public void testRuleRookIncorrectSteps() {
+		Piece rook = new Piece( PieceType.RookBlack, 40 );
+		assertThat( rule.canMovePiece( rook,  3 ) ).isFalse();
 	}
 
 }
