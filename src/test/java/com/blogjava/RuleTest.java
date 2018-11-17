@@ -100,4 +100,60 @@ public class RuleTest {
 		piece = new Piece( PieceType.AdvisorRed, 68 );
 		assertThat( rule.canMovePiece( piece, 78 ) ).isFalse();
 	}
+
+	@Test
+	public void testRuleKingBasicSteps() {
+		Piece piece = new Piece( PieceType.KingBlack, 13 );
+		assertThat( rule.canMovePiece( piece,  4 ) ).isTrue();
+		assertThat( rule.canMovePiece( piece, 12 ) ).isTrue();
+		assertThat( rule.canMovePiece( piece, 14 ) ).isTrue();
+		assertThat( rule.canMovePiece( piece, 22 ) ).isTrue();
+		
+		piece = new Piece( PieceType.KingRed, 76 );
+		assertThat( rule.canMovePiece( piece, 67 ) ).isTrue();
+		assertThat( rule.canMovePiece( piece, 75 ) ).isTrue();
+		assertThat( rule.canMovePiece( piece, 77 ) ).isTrue();
+		assertThat( rule.canMovePiece( piece, 85 ) ).isTrue();
+	}
+	
+	@Test
+	public void testRuleKingIncorrectSteps() {
+		Piece piece = new Piece( PieceType.KingBlack, 13 );
+		assertThat( rule.canMovePiece( piece,  3 ) ).isFalse();
+		assertThat( rule.canMovePiece( piece,  5 ) ).isFalse();
+
+		piece = new Piece( PieceType.KingBlack, 3 );
+		assertThat( rule.canMovePiece( piece,   2 ) ).isFalse();
+		
+		piece = new Piece( PieceType.KingRed, 67 );
+		assertThat( rule.canMovePiece( piece, 58 ) ).isFalse();
+	}
+
+	@Test
+	public void testRulePawnBasicSteps() {
+		Piece piece = new Piece( PieceType.PawnBlack, 27 );
+		assertThat( rule.canMovePiece( piece, 36 ) ).isTrue();
+		
+		piece = new Piece( PieceType.PawnBlack, 29 );
+		assertThat( rule.canMovePiece( piece, 38 ) ).isTrue();
+
+		piece = new Piece( PieceType.PawnBlack, 46 );
+		assertThat( rule.canMovePiece( piece, 45 ) ).isTrue();
+		assertThat( rule.canMovePiece( piece, 47 ) ).isTrue();
+		assertThat( rule.canMovePiece( piece, 55 ) ).isTrue();
+
+		piece = new Piece( PieceType.PawnRed, 58 );
+		assertThat( rule.canMovePiece( piece, 49 ) ).isTrue();
+	}
+	
+	@Test
+	public void testRulePawnIncorrectSteps() {
+		Piece piece = new Piece( PieceType.PawnBlack, 29 );
+		assertThat( rule.canMovePiece( piece, 20 ) ).isFalse();
+		assertThat( rule.canMovePiece( piece, 28 ) ).isFalse();
+		assertThat( rule.canMovePiece( piece, 30 ) ).isFalse();
+
+		piece = new Piece( PieceType.PawnRed, 49 );
+		assertThat( rule.canMovePiece( piece, 48 ) ).isFalse();
+	}
 }

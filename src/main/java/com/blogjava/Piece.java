@@ -61,23 +61,9 @@ public class Piece {
 		case Knight:	/* 马 */
 		case Bishop:	/* 相 */
 		case Advisor:	/* 士 */
-			canMove = rule.canMovePiece( this, newPos );
-			break;
-		case King:	/* 士 */
-			if( ( diffCol == 0 || diffRow == 0 ) && diffCenter <= 1 &&
-					( ( pieceType == PieceType.KingBlack && newPos / 9 <= 2 ) ||
-						( pieceType == PieceType.KingRed && newPos / 9 >= 7 ) ) ) {
-				canMove = true;
-			}
-			break;
+		case King:	/* 帅 */
 		case Pawn:	/* 兵 */
-			if( ( ( pieceType == PieceType.PawnBlack ) &&
-					( ( posInBoard / 45 < 1 && diffPos == 9 && newPos > posInBoard ) ||
-						( posInBoard / 45 >= 1 && ( diffPos == 1 || diffPos == 9 ) && newPos >= posInBoard - 1 ) ) ) ||
-				( ( pieceType == PieceType.PawnRed ) &&
-						( ( posInBoard / 45 >= 1 && diffPos == 9 && newPos < posInBoard ) ||
-								( posInBoard / 45 < 1 && ( diffPos == 1 || diffPos == 9 ) && newPos <= posInBoard + 1 ) ) ) )
-				canMove = true;
+			canMove = rule.canMovePiece( this, newPos );
 			break;
 		default:
 			break;

@@ -38,6 +38,22 @@ public class Rule {
 				canMove = true;
 			}
 			break;
+		case King:	/* 帅 */
+			if( ( diffCol == 0 || diffRow == 0 ) && diffCenter <= 1 &&
+					( ( piece.getType() == PieceType.KingBlack && newRow <= 2 ) ||
+						( piece.getType() == PieceType.KingRed && newRow >= 7 ) ) ) {
+				canMove = true;
+			}
+			break;
+		case Pawn:	/* 兵 */
+			if( ( ( piece.getType() == PieceType.PawnBlack ) &&
+					( ( oldSide < 1 && diffPos == 9 && newPos > oldPos ) ||
+						( oldSide >= 1 && ( diffPos == 1 || diffPos == 9 ) && newPos >= oldPos - 1 ) ) ) ||
+				( ( piece.getType() == PieceType.PawnRed ) &&
+					( ( oldSide >= 1 && diffPos == 9 && newPos < oldPos ) ||
+						( oldSide < 1 && ( diffPos == 1 || diffPos == 9 ) && newPos <= oldPos + 1 ) ) ) )
+				canMove = true;
+			break;
 		}
 		
 		return canMove;
