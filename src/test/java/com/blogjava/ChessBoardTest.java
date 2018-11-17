@@ -127,4 +127,18 @@ public class ChessBoardTest {
 		assertThat( positions[ 18 ].getPiece() ).isNull();
 		assertThat( positions[ 38 ].getPiece().getType() ).isEqualTo( PieceType.BishopBlack );
 	}
+
+	@Test
+	public void testMoveKnight() {
+		FenRecord fenSimpleRecord = new FenRecord( "1rb6/2c6/1n7/1N7/9/9/9/2C6/9/9 b - - 20 50" );
+		
+		chessBoard.loadFromFen( fenSimpleRecord );
+		Position[] positions = chessBoard.getPositions();
+
+		window.panel( "position_19" ).click();
+		assertThat( positions[ 19 ].getPiece().getType() ).isEqualTo( PieceType.KnightBlack );
+		window.panel( "position_38" ).click();
+		assertThat( positions[ 19 ].getPiece().getType() ).isEqualTo( PieceType.KnightBlack );
+		assertThat( positions[ 38 ].getPiece() ).isNull();
+	}
 }

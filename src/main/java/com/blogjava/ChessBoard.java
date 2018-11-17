@@ -163,6 +163,29 @@ public class ChessBoard extends JPanel {
 			if( positions[ ( begin + end ) / 2 ].getPiece() != null )
 				boolReplace = false;
 			break;
+		case Knight:
+			int checkPos = 0;
+			switch( selectedPos - pos ) {
+			case 11:
+			case -7:
+				checkPos = selectedPos - 1;
+				break;
+			case 7:
+			case -11:
+				checkPos = selectedPos + 1;
+				break;
+			case 17:
+			case 19:
+				checkPos = selectedPos - 9;
+				break;
+			case -17:
+			case -19:
+				checkPos = selectedPos + 9;
+				break;
+			}
+			if( positions[ checkPos ].getPiece() != null )
+				boolReplace = false;
+			break;
 		default:
 			break;
 		}
