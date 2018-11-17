@@ -104,4 +104,27 @@ public class ChessBoardTest {
 		assertThat( positions[ 64 ].getPiece() ).isNull();
 		assertThat( positions[ 19 ].getPiece().getType() ).isEqualTo( PieceType.CannonRed );
 	}
+
+	@Test
+	public void testMoveBishop() {
+		FenRecord fenSimpleRecord = new FenRecord( "1rb6/2c6/1n7/1N7/9/9/9/2C6/9/9 b - - 20 50" );
+		
+		chessBoard.loadFromFen( fenSimpleRecord );
+		window.panel( "position_2" ).requireVisible();
+
+		Position[] positions = chessBoard.getPositions();
+		window.panel( "position_2" ).click();
+		window.panel( "position_22" ).click();
+		assertThat( positions[  2 ].getPiece() ).isNull();
+		assertThat( positions[ 22 ].getPiece().getType() ).isEqualTo( PieceType.BishopBlack );
+		
+		window.panel( "position_22" ).click();
+		window.panel( "position_38" ).click();
+
+		window.panel( "position_38" ).click();
+		window.panel( "position_18" ).click();
+		assertThat( positions[ 28 ].getPiece().getType() ).isEqualTo( PieceType.KnightRed );
+		assertThat( positions[ 18 ].getPiece() ).isNull();
+		assertThat( positions[ 38 ].getPiece().getType() ).isEqualTo( PieceType.BishopBlack );
+	}
 }
