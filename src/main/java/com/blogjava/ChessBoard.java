@@ -91,6 +91,48 @@ public class ChessBoard extends JPanel {
 				} else {
 					positions[ pos ].setSelected( false );
 				}
+			} else {
+				boolean booltmp = positions[ selectedPos ].getPiece().getSide() != positions[ pos ].getPiece().getSide();
+				boolean boolCanMove = positions[ selectedPos ].getPiece().canMoveTo( pos );
+				boolean boolReplace = true;
+				System.out.println( "SelectPos: " + selectedPos + ", pos: " + pos + ", booltmp: " + booltmp );
+				if( booltmp ) {
+					if( boolCanMove ) {
+						switch( positions[ selectedPos ].getPiece().getBasicType() ) {
+						case Rook:
+							int begin = selectedPos;
+							int end = pos;
+							int inc = 1;
+							if( selectedPos > pos ) {
+								begin = pos;
+								end = selectedPos;
+							}
+							if( end - begin >= 9 )
+								inc = 9;
+							for( int i = begin + inc; i < end; i += inc ) {
+								if( positions[ i ].getPiece() != null )
+									boolReplace = false;
+							}
+							break;
+						default:
+							break;
+						}
+					}
+				} else {
+					positions[ selectedPos ].setSelected( false );
+					this.selectedPos = pos;
+					positions[ pos ].setSelected( true );
+				}
+				if( booltmp && boolCanMove && boolReplace ) {
+					Piece piece = positions[ selectedPos ].getPiece();
+					piece.setPosInBoard( pos );
+					positions[ pos ].setPiece( piece );
+					positions[ selectedPos ].setPiece( null );
+					
+					movedPos = new int[ 2 ];
+					movedPos[ 0 ] = selectedPos;
+					movedPos[ 1 ] = pos;
+				}
 			}
 		} else {
 			this.selectedPos = pos;

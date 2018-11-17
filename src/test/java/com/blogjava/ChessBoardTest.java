@@ -52,7 +52,7 @@ public class ChessBoardTest {
 
 	@Test
 	public void testMoveRook() {
-		FenRecord fenSimpleRecord = new FenRecord( "1r7/2c6/9/9/9/9/9/9/9/9 b - - 20 50" );
+		FenRecord fenSimpleRecord = new FenRecord( "1r7/2c6/9/1N7/9/9/9/9/9/9 b - - 20 50" );
 		
 		chessBoard.loadFromFen( fenSimpleRecord );
 		window.panel( "position_0" ).requireVisible();
@@ -65,6 +65,14 @@ public class ChessBoardTest {
 		window.panel( "position_10" ).click();
 		assertThat( positions[ 1 ].getPiece() ).isNull();
 		assertThat( positions[ 10 ].getPiece().getType() ).isEqualTo( PieceType.RookBlack );
+
+		window.panel( "position_10" ).click();
+		assertThat( chessBoard.getSelectedPos() ).isEqualTo( 10 );
+		assertThat( positions[ 10 ].getPiece().getType() ).isEqualTo( PieceType.RookBlack );
+		assertThat( positions[ 28 ].getPiece().getType() ).isEqualTo( PieceType.KnightRed );
+		window.panel( "position_28" ).click();
+		assertThat( positions[ 10 ].getPiece() ).isNull();
+		assertThat( positions[ 28 ].getPiece().getType() ).isEqualTo( PieceType.RookBlack );
 		
 		window.panel( "position_11" ).click();
 		assertThat( chessBoard.getSelectedPos() ).isEqualTo( 11 );
