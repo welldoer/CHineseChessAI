@@ -141,4 +141,44 @@ public class ChessBoardTest {
 		assertThat( positions[ 19 ].getPiece().getType() ).isEqualTo( PieceType.KnightBlack );
 		assertThat( positions[ 38 ].getPiece() ).isNull();
 	}
+
+	@Test
+	public void testMovePawn() {
+		FenRecord fenSimpleRecord = new FenRecord( "1rb6/2c6/1n7/1Np6/2R6/1CN6/9/2C6/9/9 b - - 20 50" );
+		
+		chessBoard.loadFromFen( fenSimpleRecord );
+		Position[] positions = chessBoard.getPositions();
+
+		window.panel( "position_29" ).click();
+		assertThat( positions[ 29 ].getPiece().getType() ).isEqualTo( PieceType.PawnBlack );
+		window.panel( "position_38" ).click();
+
+		window.panel( "position_38" ).click();
+		window.panel( "position_47" ).click();
+		
+		window.panel( "position_47" ).click();
+		window.panel( "position_46" ).click();
+		assertThat( positions[ 46 ].getPiece().getType() ).isEqualTo( PieceType.PawnBlack );
+		assertThat( positions[ 47 ].getPiece() ).isNull();
+	}
+
+	@Test
+	public void testMoveKingAndAdvisor() {
+		FenRecord fenSimpleRecord = new FenRecord( "1rb2a3/2c1Pk3/1n2cN3/1Np6/2R6/1CN6/9/2C6/9/9 b - - 20 50" );
+		
+		chessBoard.loadFromFen( fenSimpleRecord );
+		Position[] positions = chessBoard.getPositions();
+
+		window.panel( "position_5" ).click();
+		window.panel( "position_13" ).click();
+		assertThat( positions[ 13 ].getPiece().getType() ).isEqualTo( PieceType.AdvisorBlack );
+
+		window.panel( "position_14" ).click();
+		window.panel( "position_23" ).click();
+		assertThat( positions[ 23 ].getPiece().getType() ).isEqualTo( PieceType.KingBlack );
+
+		window.panel( "position_23" ).click();
+		window.panel( "position_22" ).click();
+		assertThat( positions[ 23 ].getPiece().getType() ).isEqualTo( PieceType.KingBlack );
+	}
 }
