@@ -42,6 +42,10 @@ public class Piece {
 	public void setPosInBoard( int posInBoard ) {
 		this.posInBoard = posInBoard;
 	}
+	
+	public PieceSide getSide() {
+		return pieceType.getPieceSide();
+	}
 
 	public boolean canMoveTo(int newPos) {
 		boolean canMove = false;

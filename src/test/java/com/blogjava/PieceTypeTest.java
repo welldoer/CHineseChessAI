@@ -19,6 +19,7 @@ public class PieceTypeTest {
 		assertThat( pieceType.getGifName() ).isEqualTo( "rk" );
 		assertThat( pieceType.getName() ).isEqualTo( "红帥" );
 		assertThat( pieceType.getBasicType() ).isEqualTo( PieceBasicType.King );
+		assertThat( pieceType.getPieceSide() ).isEqualTo( PieceSide.Red );
 	}
 		
 	@Test
@@ -28,6 +29,7 @@ public class PieceTypeTest {
 		assertThat( pieceType.getGifName() ).isEqualTo( "bb" );
 		assertThat( pieceType.getName() ).isEqualTo( "黑象" );
 		assertThat( pieceType.getBasicType() ).isEqualTo( PieceBasicType.Bishop );
+		assertThat( pieceType.getPieceSide() ).isEqualTo( PieceSide.Black );
 	}
 
 }
