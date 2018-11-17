@@ -49,26 +49,10 @@ public class Piece {
 
 	public boolean canMoveTo(int newPos) {
 		boolean canMove = false;
-		int diffPos = Math.abs( newPos - posInBoard );
-		int diffCol = Math.abs( newPos % 9 - posInBoard % 9 );
-		int diffRow = Math.abs( newPos / 9 - posInBoard / 9 );
-		int diffCenter = Math.abs( newPos % 9 - 4 );
 
 		Rule rule = new Rule();
-		switch( pieceType.getBasicType() ) {
-		case Cannon :	/* 炮 */
-		case Rook:		/* 车 */
-		case Knight:	/* 马 */
-		case Bishop:	/* 相 */
-		case Advisor:	/* 士 */
-		case King:	/* 帅 */
-		case Pawn:	/* 兵 */
-			canMove = rule.canMovePiece( this, newPos );
-			break;
-		default:
-			break;
-		}
-		
+		canMove = rule.canMovePiece( this, newPos );
+
 		return canMove;
 	}
 }
