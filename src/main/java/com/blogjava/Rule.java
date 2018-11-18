@@ -61,7 +61,7 @@ public class Rule {
 
 	public boolean isRightPath(Tiles tiles, int oldPos, int newPos) {
 		boolean canPass = false;
-		Piece oldPiece, newPiece, chkPiece;
+		Piece oldPiece, newPiece;
 
 		oldPiece = tiles.getPiece( oldPos );
 		newPiece = tiles.getPiece( newPos );
@@ -126,6 +126,8 @@ public class Rule {
 				case Bishop:
 					if( tiles.getPiece( ( begin + end ) / 2 ) != null )
 						canPass = false;
+					break;
+				default:
 					break;
 				}
 			}

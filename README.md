@@ -10,7 +10,7 @@
 #### 待开发任务清单
 ~~0. 对士、帅、兵的移动检查无须在Rule中添加功能代码，仅添加测试代码验证即可；~~
 
-1. 添加Tiles类来存放原有的Positions的非GUI信息，准备剔除Position相关的代码；
+1. 添加Tiles类来存放原有的Positions的非GUI信息，准备采用Tiles先建立与Position相同的功能调用代码，之后再剔除Position相关的代码；
 
 2. 支持从FEN类加载棋局信息至Tiles，故Tiles成为无GUI显示的完整象棋；
 
