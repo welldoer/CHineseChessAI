@@ -160,7 +160,7 @@ public class RuleTest {
 	@Test
 	public void testRulehasPassPath() {
 		Tiles tiles = new Tiles();
-		FenRecord fenRecord = new FenRecord( "3rP1b2/n8/1CN1C1cnr/1P2p4/2b1r4/9/9/9/9/9 r - - 0 0" );
+		FenRecord fenRecord = new FenRecord( "3rPPb2/n3a4/1CN1C1cnr/1P2p4/2b1r4/2P6/9/5p3/4AK3/5R3 r - - 0 0" );
 		tiles.loadFromFen( fenRecord );
 		assertThat( rule.isRightPath( tiles, 40,  4 ) ).isFalse();			/* 车隔子不能吃子	*/
 		assertThat( rule.isRightPath( tiles, 40, 31 ) ).isFalse();			/* 车不能吃己方子	*/
@@ -179,5 +179,16 @@ public class RuleTest {
 		assertThat( rule.isRightPath( tiles, 38, 18 ) ).isFalse();			/* 相飞被阻挡		*/
 		assertThat( rule.isRightPath( tiles, 38, 22 ) ).isTrue();			/* 相可以吃子		*/
 		
+		assertThat( rule.isRightPath( tiles, 13,  3 ) ).isFalse();			/* 士不可以移动	*/
+		assertThat( rule.isRightPath( tiles, 13,  5 ) ).isTrue();			/* 士可以吃子		*/
+		assertThat( rule.isRightPath( tiles, 76, 68 ) ).isTrue();			/* 士可以吃子		*/
+		assertThat( rule.isRightPath( tiles, 76, 86 ) ).isFalse();			/* 士不可以移动	*/
+
+		assertThat( rule.isRightPath( tiles, 77, 68 ) ).isTrue();			/* 帅可以吃子		*/
+		assertThat( rule.isRightPath( tiles, 77, 76 ) ).isFalse();			/* 帅不可以移动	*/
+		assertThat( rule.isRightPath( tiles, 77, 86 ) ).isFalse();			/* 帅不可以移动	*/
+
+		assertThat( rule.isRightPath( tiles, 47, 38 ) ).isTrue();			/* 兵可以过河吃子	*/
+		assertThat( rule.isRightPath( tiles, 47, 46 ) ).isFalse();			/* 兵未过河不乱动	*/
 	}
 }
