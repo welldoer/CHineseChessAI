@@ -96,7 +96,7 @@ public class Rule {
 						}
 					}
 					if( ( num == 0 && newPiece != null ) ||
-						( num == 1 && oldPiece.getSide() == newPiece.getSide() ) ||
+						( num == 1 && ( newPiece == null || oldPiece.getSide() == newPiece.getSide() ) ) ||
 						( num > 1 ) )
 						canPass = false;
 					break;
