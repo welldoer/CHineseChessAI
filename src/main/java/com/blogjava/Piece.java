@@ -35,7 +35,7 @@ public class Piece {
 		return pieceType.getName();
 	}
 	
-	public int getPosInBoard() {
+	public int getPosInTiles() {
 		return posInBoard;
 	}
 	

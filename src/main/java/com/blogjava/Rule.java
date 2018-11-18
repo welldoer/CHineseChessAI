@@ -2,9 +2,9 @@ package com.blogjava;
 
 public class Rule {
 
-	public boolean canMovePiece(Piece piece, int newPos) {
-		boolean canMove = false;
-		int oldPos = piece.getPosInBoard();
+	public boolean hasDirectPath(Piece piece, int newPos) {
+		boolean hasPath = false;
+		int oldPos = piece.getPosInTiles();
 		
 		int diffPos = Math.abs( newPos - oldPos );
 		int diffCol = Math.abs( newPos % 9 - oldPos % 9 );
@@ -16,33 +16,33 @@ public class Rule {
 		int newRow = newPos / 9;
 
 		switch( piece.getBasicType() ) {
-		case Cannon :	/* 炮 */
 		case Rook:		/* 车 */
+		case Cannon :	/* 炮 */
 			if( diffCol == 0 || diffRow == 0 )
-				canMove = true;
+				hasPath = true;
 			break;
 		case Knight:	/* 马 */
 			if( ( ( diffPos %  7 == 0 || diffPos % 11 == 0 ) && diffRow == 1 ) ||
 				( ( diffPos % 17 == 0 || diffPos % 19 == 0 ) && diffRow == 2 ) )
-				canMove = true;
+				hasPath = true;
 			break;
 		case Bishop:	/* 相 */
 			if( ( diffPos == 16 || diffPos == 20 ) && diffSide == 0 ) {
-				canMove = true;
+				hasPath = true;
 			}
 			break;
 		case Advisor:	/* 士 */
 			if( ( diffPos == 8 || diffPos == 10 ) && diffCenter <= 1 &&
 					( ( piece.getType() == PieceType.AdvisorBlack && newRow <= 2 ) ||
 						( piece.getType() == PieceType.AdvisorRed && newRow >= 7 ) ) ) {
-				canMove = true;
+				hasPath = true;
 			}
 			break;
 		case King:	/* 帅 */
 			if( ( diffCol == 0 || diffRow == 0 ) && diffCenter <= 1 &&
 					( ( piece.getType() == PieceType.KingBlack && newRow <= 2 ) ||
 						( piece.getType() == PieceType.KingRed && newRow >= 7 ) ) ) {
-				canMove = true;
+				hasPath = true;
 			}
 			break;
 		case Pawn:	/* 兵 */
@@ -52,11 +52,86 @@ public class Rule {
 				( ( piece.getType() == PieceType.PawnRed ) &&
 					( ( oldSide >= 1 && diffPos == 9 && newPos < oldPos ) ||
 						( oldSide < 1 && ( diffPos == 1 || diffPos == 9 ) && newPos <= oldPos + 1 ) ) ) )
-				canMove = true;
+				hasPath = true;
 			break;
 		}
 		
-		return canMove;
+		return hasPath;
+	}
+
+	public boolean isRightPath(Tiles tiles, int oldPos, int newPos) {
+		boolean canPass = false;
+		Piece oldPiece, newPiece, chkPiece;
+
+		oldPiece = tiles.getPiece( oldPos );
+		newPiece = tiles.getPiece( newPos );
+		
+		if( newPiece == null || oldPiece.getSide() != newPiece.getSide() ) {
+			canPass = hasDirectPath( oldPiece, newPos );
+			if( canPass ) {
+				int begin, end, inc;
+				begin = oldPos;
+				end = newPos;
+				inc = 1;
+				if( oldPos > newPos ) {
+					begin = newPos;
+					end = oldPos;
+				}
+				switch( oldPiece.getBasicType() ) {
+				case Rook:
+					if( end - begin >= 9 )
+						inc = 9;
+					for( int i = begin + inc; i < end; i += inc ) {
+						if( tiles.getPiece( i ) != null )
+							canPass = false;
+					}
+					break;
+				case Cannon:
+					if( end - begin >= 9 )
+						inc = 9;
+					int num = 0;
+					for( int i = begin + inc; i < end; i += inc ) {
+						if( tiles.getPiece( i ) != null ) {
+							num++;
+						}
+					}
+					if( ( num == 0 && newPiece != null ) ||
+						( num == 1 && oldPiece.getSide() == newPiece.getSide() ) ||
+						( num > 1 ) )
+						canPass = false;
+					break;
+				case Knight:
+					int checkPos = 0;
+					switch( oldPos - newPos ) {
+					case 11:
+					case -7:
+						checkPos = oldPos - 1;
+						break;
+					case 7:
+					case -11:
+						checkPos = oldPos + 1;
+						break;
+					case 17:
+					case 19:
+						checkPos = oldPos - 9;
+						break;
+					case -17:
+					case -19:
+						checkPos = oldPos + 9;
+						break;
+					}
+					if( tiles.getPiece( checkPos ) != null )
+						canPass = false;
+					break;
+				case Bishop:
+					if( tiles.getPiece( ( begin + end ) / 2 ) != null )
+						canPass = false;
+					break;
+				}
+			}
+		}
+
+		return canPass;
 	}
 
 }

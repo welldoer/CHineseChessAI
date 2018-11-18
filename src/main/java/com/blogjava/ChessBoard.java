@@ -39,7 +39,7 @@ public class ChessBoard extends JPanel {
 		while( true ) {
 			Piece piece = fenRecord.fetchNextPiece();
 			if( piece != null ) {
-				int posInBoard = piece.getPosInBoard();
+				int posInBoard = piece.getPosInTiles();
 				positions[ posInBoard ].setPiece( piece );
 			} else
 				break;
@@ -77,7 +77,7 @@ public class ChessBoard extends JPanel {
 		if( selectedPos != -1 ) {
 			Rule rule = new Rule();
 			Piece oldPiece = positions[ selectedPos ].getPiece();
-			boolean boolCanMove = rule.canMovePiece( oldPiece, pos );
+			boolean boolCanMove = rule.hasDirectPath( oldPiece, pos );
 			if( boolCanMove ) {
 				boolCanMove = canMovePieceBetweenPositions( selectedPos, pos );
 			}

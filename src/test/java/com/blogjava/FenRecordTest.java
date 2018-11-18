@@ -21,11 +21,11 @@ public class FenRecordTest {
 		
 		Piece piece = fenSimpleRecord.fetchNextPiece();
 		assertThat( piece.getType() ).isEqualTo( PieceType.RookBlack );
-		assertThat( piece.getPosInBoard() ).isEqualTo( 1 );
+		assertThat( piece.getPosInTiles() ).isEqualTo( 1 );
 		
 		piece = fenSimpleRecord.fetchNextPiece();
 		assertThat( piece.getType() ).isEqualTo( PieceType.CannonBlack );
-		assertThat( piece.getPosInBoard() ).isEqualTo( 11 );
+		assertThat( piece.getPosInTiles() ).isEqualTo( 11 );
 
 		piece = fenSimpleRecord.fetchNextPiece();
 		assertThat( piece ).isNull();
