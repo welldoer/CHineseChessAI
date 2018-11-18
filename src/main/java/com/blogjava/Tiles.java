@@ -34,6 +34,7 @@ public class Tiles {
 		canMove = rule.isRightPath( this, oldPos, newPos );
 		if( canMove ) {
 			pieces[ newPos ] = pieces[ oldPos ];
+			pieces[ newPos ].setPosInBoard( newPos );
 			pieces[ oldPos ] = null;
 		}
 		

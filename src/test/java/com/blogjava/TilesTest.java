@@ -31,5 +31,6 @@ public class TilesTest {
 		tiles.movePiece( 10, 28 );
 		assertThat( tiles.getPiece( 10 ) ).isNull();
 		assertThat( tiles.getPiece( 28 ).getType() ).isEqualTo( PieceType.RookBlack );
+		assertThat( tiles.getPiece( 28 ).getPosInTiles() ).isEqualTo( 28 );
 	}
 }

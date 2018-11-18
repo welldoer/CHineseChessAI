@@ -45,16 +45,20 @@ public class ChessBoardTest {
 	@Test
 	public void testLoadFromFen1() {
 		FenRecord fenOrigRecord = new FenRecord( "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1" );
+		FenRecord fenOrigRecor_ = new FenRecord( "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1" );
 		
 		chessBoard.loadFromFen( fenOrigRecord );
+		chessBoard.loadFromFe_( fenOrigRecor_ );
 		window.panel( "position_0" ).requireVisible();
 	}
 
 	@Test
 	public void testMoveRook() {
 		FenRecord fenSimpleRecord = new FenRecord( "1r7/2c6/9/1N7/9/9/9/9/9/9 b - - 20 50" );
+		FenRecord fenSimpleRecor_ = new FenRecord( "1r7/2c6/9/1N7/9/9/9/9/9/9 b - - 20 50" );
 		
 		chessBoard.loadFromFen( fenSimpleRecord );
+		chessBoard.loadFromFe_( fenSimpleRecor_ );
 		window.panel( "position_0" ).requireVisible();
 		
 		Position[] positions = chessBoard.getPositions();
@@ -81,8 +85,10 @@ public class ChessBoardTest {
 	@Test
 	public void testMoveCannon() {
 		FenRecord fenSimpleRecord = new FenRecord( "1r7/2c6/1n7/1N7/9/9/9/2C6/9/9 b - - 20 50" );
+		FenRecord fenSimpleRecor_ = new FenRecord( "1r7/2c6/1n7/1N7/9/9/9/2C6/9/9 b - - 20 50" );
 		
 		chessBoard.loadFromFen( fenSimpleRecord );
+		chessBoard.loadFromFe_( fenSimpleRecor_ );
 		window.panel( "position_0" ).requireVisible();
 		
 		Position[] positions = chessBoard.getPositions();
@@ -108,8 +114,10 @@ public class ChessBoardTest {
 	@Test
 	public void testMoveBishop() {
 		FenRecord fenSimpleRecord = new FenRecord( "1rb6/2c6/1n7/1N7/9/9/9/2C6/9/9 b - - 20 50" );
+		FenRecord fenSimpleRecor_ = new FenRecord( "1rb6/2c6/1n7/1N7/9/9/9/2C6/9/9 b - - 20 50" );
 		
 		chessBoard.loadFromFen( fenSimpleRecord );
+		chessBoard.loadFromFe_( fenSimpleRecor_ );
 		window.panel( "position_2" ).requireVisible();
 
 		Position[] positions = chessBoard.getPositions();
@@ -131,8 +139,10 @@ public class ChessBoardTest {
 	@Test
 	public void testMoveKnight() {
 		FenRecord fenSimpleRecord = new FenRecord( "1rb6/2c6/1n7/1N7/9/9/9/2C6/9/9 b - - 20 50" );
+		FenRecord fenSimpleRecor_ = new FenRecord( "1rb6/2c6/1n7/1N7/9/9/9/2C6/9/9 b - - 20 50" );
 		
 		chessBoard.loadFromFen( fenSimpleRecord );
+		chessBoard.loadFromFe_( fenSimpleRecor_ );
 		Position[] positions = chessBoard.getPositions();
 
 		window.panel( "position_19" ).click();
@@ -145,8 +155,10 @@ public class ChessBoardTest {
 	@Test
 	public void testMovePawn() {
 		FenRecord fenSimpleRecord = new FenRecord( "1rb6/2c6/1n7/1Np6/2R6/1CN6/9/2C6/9/9 b - - 20 50" );
+		FenRecord fenSimpleRecor_ = new FenRecord( "1rb6/2c6/1n7/1Np6/2R6/1CN6/9/2C6/9/9 b - - 20 50" );
 		
 		chessBoard.loadFromFen( fenSimpleRecord );
+		chessBoard.loadFromFe_( fenSimpleRecor_ );
 		Position[] positions = chessBoard.getPositions();
 
 		window.panel( "position_29" ).click();
@@ -165,8 +177,10 @@ public class ChessBoardTest {
 	@Test
 	public void testMoveKingAndAdvisor() {
 		FenRecord fenSimpleRecord = new FenRecord( "1rb2a3/2c1Pk3/1n2cN3/1Np6/2R6/1CN6/9/2C6/9/9 b - - 20 50" );
+		FenRecord fenSimpleRecor_ = new FenRecord( "1rb2a3/2c1Pk3/1n2cN3/1Np6/2R6/1CN6/9/2C6/9/9 b - - 20 50" );
 		
 		chessBoard.loadFromFen( fenSimpleRecord );
+		chessBoard.loadFromFe_( fenSimpleRecor_ );
 		Position[] positions = chessBoard.getPositions();
 
 		window.panel( "position_5" ).click();

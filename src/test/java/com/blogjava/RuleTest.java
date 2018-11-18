@@ -191,4 +191,18 @@ public class RuleTest {
 		assertThat( rule.isRightPath( tiles, 47, 38 ) ).isTrue();			/* 兵可以过河吃子	*/
 		assertThat( rule.isRightPath( tiles, 47, 46 ) ).isFalse();			/* 兵未过河不乱动	*/
 	}
+	
+	@Test
+	public void testVerify() {
+		Tiles tiles = new Tiles();
+		FenRecord fenSimpleRecord = new FenRecord( "1r7/2c6/1n7/1N7/9/9/9/2C6/9/9 b - - 20 50" );
+		tiles.loadFromFen( fenSimpleRecord );
+		assertThat( rule.isRightPath( tiles, 65, 64 ) ).isTrue();
+		tiles.movePiece( 65, 64 );
+		assertThat( tiles.getPiece( 64 ).getType() ).isEqualTo( PieceType.CannonRed );
+		tiles.movePiece( 64,  1 );
+		assertThat( tiles.getPiece(  1 ).getType() ).isEqualTo( PieceType.RookBlack );
+		tiles.movePiece( 64, 19 );
+		assertThat( tiles.getPiece( 19 ).getType() ).isEqualTo( PieceType.CannonRed );
+	}
 }
