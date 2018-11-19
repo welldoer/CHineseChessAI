@@ -23,7 +23,7 @@ public class PositionTest {
 
 	@Before
 	public void setUp() throws Exception {
-		position = GuiActionRunner.execute(() -> new Position( 0 ) );
+		position = GuiActionRunner.execute(() -> new Position( null, 0 ) );
 		window = showInFrame( position );
 		window.show();
 	}

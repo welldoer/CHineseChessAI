@@ -18,19 +18,11 @@ public class Position extends JPanel {
 	private Image imgPosition[];
 	private boolean isSelected = false;
 	private Image imgPiece;
-	private Piece piece = null;
 	
 	public Position( ChessBoard chessBoard, int pos ) {
 		this.chessBoard = chessBoard;
 		this.pos = pos;
-		buildPosition( pos );
-	}
 
-	public Position( int pos ) {
-		buildPosition(pos);
-	}
-
-	private void buildPosition(int pos) {
 		setName( "position_" + pos );
 		
 		urlImgPosition = new URL[ 2 ];
@@ -50,10 +42,6 @@ public class Position extends JPanel {
 		super.paintComponent( g );
 
 		g.drawImage( imgPosition[ isSelected ? 1 : 0 ], 0, 0, this );
-		
-		if( piece != null ) {
-			g.drawImage( piece.getImage(), 0, 0, this);
-		}
 		
 		if( imgPiece != null )
 			g.drawImage( imgPiece, 0, 0, this );
