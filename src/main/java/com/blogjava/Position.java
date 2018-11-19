@@ -17,6 +17,7 @@ public class Position extends JPanel {
 	private URL urlImgPosition[];
 	private Image imgPosition[];
 	private boolean isSelected = false;
+	private Image imgPiece;
 	private Piece piece = null;
 	
 	public Position( ChessBoard chessBoard, int pos ) {
@@ -53,6 +54,9 @@ public class Position extends JPanel {
 		if( piece != null ) {
 			g.drawImage( piece.getImage(), 0, 0, this);
 		}
+		
+		if( imgPiece != null )
+			g.drawImage( imgPiece, 0, 0, this );
 	}
 
 	@Override
@@ -92,5 +96,13 @@ public class Position extends JPanel {
 
 	public void setSelected( boolean state ) {
 		isSelected = state;
+	}
+
+	public void setImgPiece( Image imgPiece ) {
+		this.imgPiece = imgPiece;
+	}
+
+	public Image getImgPiece() {
+		return imgPiece;
 	}
 }
