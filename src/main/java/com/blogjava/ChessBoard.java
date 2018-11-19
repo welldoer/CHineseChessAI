@@ -34,21 +34,9 @@ public class ChessBoard extends JPanel {
 			positions[ i ] = position;
 			add( position );
 		}
-		tiles = new Tiles();
+		tiles = new Tiles( this );
 	}
 
-	public ChessBoard loadFromFenX( FenRecord fenRecord ) {
-		while( true ) {
-			Piece piece = fenRecord.fetchNextPiece();
-			if( piece != null ) {
-				int posInBoard = piece.getPosInTiles();
-				positions[ posInBoard ].setPiece( piece );
-			} else
-				break;
-		}
-		
-		return this;
-	}
 	public ChessBoard loadFromFen( FenRecord fenRecord ) {
 		tiles.loadFromFen( fenRecord );
 		return this;
@@ -96,11 +84,6 @@ public class ChessBoard extends JPanel {
 			else if( tiles.getPiece( pos ) == null ) {
 				System.out.println( "1: Old pos: " + selectedPos + ", New pos: " + pos + "." );
 				if( boolCanMove ) {
-					Piece piece = positions[ selectedPos ].getPiece( );
-					piece.setPosInBoard( pos );
-					positions[ pos ].setPiece( piece );
-					positions[ selectedPos ].setPiece( null );
-
 					tiles.movePiece( selectedPos, pos );
 					
 					movedPos = new int[ 2 ];
@@ -123,11 +106,6 @@ public class ChessBoard extends JPanel {
 					positions[ pos ].setSelected( true );
 				}
 				if( booltmp && boolCanMove && boolReplace ) {
-					Piece piece = positions[ selectedPos ].getPiece();
-					piece.setPosInBoard( pos );
-					positions[ pos ].setPiece( piece );
-					positions[ selectedPos ].setPiece( null );
-
 					tiles.movePiece( selectedPos, pos );
 										
 					movedPos = new int[ 2 ];

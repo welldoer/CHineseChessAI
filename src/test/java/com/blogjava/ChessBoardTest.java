@@ -44,20 +44,16 @@ public class ChessBoardTest {
 
 	@Test
 	public void testLoadFromFen1() {
-		FenRecord fenOrigRecordX = new FenRecord( "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1" );
 		FenRecord fenOrigRecord = new FenRecord( "rnbakabnr/9/1c5c1/p1p1p1p1p/9/9/P1P1P1P1P/1C5C1/9/RNBAKABNR r - - 0 1" );
 		
-		chessBoard.loadFromFenX( fenOrigRecordX );
 		chessBoard.loadFromFen( fenOrigRecord );
 		window.panel( "position_0" ).requireVisible();
 	}
 
 	@Test
 	public void testMoveRook() {
-		FenRecord fenSimpleRecordX = new FenRecord( "1r7/2c6/9/1N7/9/9/9/9/9/9 b - - 20 50" );
 		FenRecord fenSimpleRecord = new FenRecord( "1r7/2c6/9/1N7/9/9/9/9/9/9 b - - 20 50" );
 		
-		chessBoard.loadFromFenX( fenSimpleRecordX );
 		chessBoard.loadFromFen( fenSimpleRecord );
 		window.panel( "position_0" ).requireVisible();
 		
@@ -65,7 +61,6 @@ public class ChessBoardTest {
 		assertThat( tiles.getPiece( 1 ).getType() ).isEqualTo( PieceType.RookBlack );
 		window.panel( "position_1" ).click();
 		assertThat( chessBoard.getSelectedPos() ).isEqualTo( 1 );
-//		window.dialog().button().click();
 		window.panel( "position_10" ).click();
 		assertThat( tiles.getPiece( 1 ) ).isNull();
 		assertThat( tiles.getPiece( 10 ).getType() ).isEqualTo( PieceType.RookBlack );
@@ -84,10 +79,8 @@ public class ChessBoardTest {
 
 	@Test
 	public void testMoveCannon() {
-		FenRecord fenSimpleRecordX = new FenRecord( "1r7/2c6/1n7/1N7/9/9/9/2C6/9/9 b - - 20 50" );
 		FenRecord fenSimpleRecord = new FenRecord( "1r7/2c6/1n7/1N7/9/9/9/2C6/9/9 b - - 20 50" );
 		
-		chessBoard.loadFromFenX( fenSimpleRecordX );
 		chessBoard.loadFromFen( fenSimpleRecord );
 		window.panel( "position_0" ).requireVisible();
 		
@@ -113,10 +106,8 @@ public class ChessBoardTest {
 
 	@Test
 	public void testMoveBishop() {
-		FenRecord fenSimpleRecordX = new FenRecord( "1rb6/2c6/1n7/1N7/9/9/9/2C6/9/9 b - - 20 50" );
 		FenRecord fenSimpleRecord = new FenRecord( "1rb6/2c6/1n7/1N7/9/9/9/2C6/9/9 b - - 20 50" );
 		
-		chessBoard.loadFromFenX( fenSimpleRecordX );
 		chessBoard.loadFromFen( fenSimpleRecord );
 		window.panel( "position_2" ).requireVisible();
 
@@ -138,10 +129,8 @@ public class ChessBoardTest {
 
 	@Test
 	public void testMoveKnight() {
-		FenRecord fenSimpleRecordX = new FenRecord( "1rb6/2c6/1n7/1N7/9/9/9/2C6/9/9 b - - 20 50" );
 		FenRecord fenSimpleRecord = new FenRecord( "1rb6/2c6/1n7/1N7/9/9/9/2C6/9/9 b - - 20 50" );
 		
-		chessBoard.loadFromFenX( fenSimpleRecordX );
 		chessBoard.loadFromFen( fenSimpleRecord );
 		Tiles tiles = chessBoard.getTiles();
 
@@ -154,10 +143,8 @@ public class ChessBoardTest {
 
 	@Test
 	public void testMovePawn() {
-		FenRecord fenSimpleRecordX = new FenRecord( "1rb6/2c6/1n7/1Np6/2R6/1CN6/9/2C6/9/9 b - - 20 50" );
 		FenRecord fenSimpleRecord = new FenRecord( "1rb6/2c6/1n7/1Np6/2R6/1CN6/9/2C6/9/9 b - - 20 50" );
 		
-		chessBoard.loadFromFenX( fenSimpleRecordX );
 		chessBoard.loadFromFen( fenSimpleRecord );
 		Tiles tiles = chessBoard.getTiles();
 
@@ -176,10 +163,8 @@ public class ChessBoardTest {
 
 	@Test
 	public void testMoveKingAndAdvisor() {
-		FenRecord fenSimpleRecordX = new FenRecord( "1rb2a3/2c1Pk3/1n2cN3/1Np6/2R6/1CN6/9/2C6/9/9 b - - 20 50" );
 		FenRecord fenSimpleRecord = new FenRecord( "1rb2a3/2c1Pk3/1n2cN3/1Np6/2R6/1CN6/9/2C6/9/9 b - - 20 50" );
 		
-		chessBoard.loadFromFenX( fenSimpleRecordX );
 		chessBoard.loadFromFen( fenSimpleRecord );
 		Tiles tiles = chessBoard.getTiles();
 

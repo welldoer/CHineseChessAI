@@ -1,10 +1,12 @@
 package com.blogjava;
 
 public class Tiles {
+	private ChessBoard chessBoard;
 	private Piece[] pieces = new Piece[ 90 ];
 	private Rule rule = new Rule();
 
-	public Tiles() {
+	public Tiles( ChessBoard chessBoard) {
+		this.chessBoard = chessBoard;
 	}
 	
 	public int size() {
@@ -17,6 +19,8 @@ public class Tiles {
 			if( piece != null ) {
 				int posInTiles = piece.getPosInTiles();
 				pieces[ posInTiles ] = piece;
+				if( chessBoard != null )
+					chessBoard.getPositions()[ posInTiles ].setImgPiece( piece.getImage() );
 			} else
 				break;
 		}
@@ -36,6 +40,10 @@ public class Tiles {
 			pieces[ newPos ] = pieces[ oldPos ];
 			pieces[ newPos ].setPosInBoard( newPos );
 			pieces[ oldPos ] = null;
+			if( chessBoard != null ) {
+				chessBoard.getPositions()[ newPos ].setImgPiece( pieces[ newPos ].getImage() );
+				chessBoard.getPositions()[ oldPos ].setImgPiece( null );
+			}
 		}
 		
 		return this;

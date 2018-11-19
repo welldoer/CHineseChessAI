@@ -71,9 +71,6 @@ public class Position extends JPanel {
 	class MouseMonitor extends MouseAdapter {
 
 		public void mousePressed( MouseEvent e ) {
-//			String msg = "你点击了【" + ( piece != null ? piece.getName() : "棋盘" )  + "】！";
-//			JOptionPane.showMessageDialog( Position.this, msg );
-			
 			isSelected = ! isSelected;
 			
 			if( chessBoard != null ) {
@@ -83,17 +80,7 @@ public class Position extends JPanel {
 			repaint();
 		}
 	}
-
-	public Position setPiece(Piece piece) {
-		this.piece = piece;
-		
-		return this;
-	}
-
-	public Piece getPiece() {
-		return piece;
-	}
-
+	
 	public void setSelected( boolean state ) {
 		isSelected = state;
 	}

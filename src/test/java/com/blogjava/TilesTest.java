@@ -10,7 +10,7 @@ public class TilesTest {
 
 	@Before
 	public void setUp() throws Exception {
-		tiles = new Tiles();
+		tiles = new Tiles( null );
 	}
 
 	@Test

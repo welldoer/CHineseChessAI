@@ -159,7 +159,7 @@ public class RuleTest {
 	
 	@Test
 	public void testRulehasPassPath() {
-		Tiles tiles = new Tiles();
+		Tiles tiles = new Tiles( null );
 		FenRecord fenRecord = new FenRecord( "3rPPb2/n3a4/1CN1C1cnr/1P2p4/2b1r4/2P6/9/5p3/4AK3/5R3 r - - 0 0" );
 		tiles.loadFromFen( fenRecord );
 		assertThat( rule.isRightPath( tiles, 40,  4 ) ).isFalse();			/* 车隔子不能吃子	*/
@@ -194,7 +194,7 @@ public class RuleTest {
 	
 	@Test
 	public void testVerify() {
-		Tiles tiles = new Tiles();
+		Tiles tiles = new Tiles( null );
 		FenRecord fenSimpleRecord = new FenRecord( "1r7/2c6/1n7/1N7/9/9/9/2C6/9/9 b - - 20 50" );
 		tiles.loadFromFen( fenSimpleRecord );
 		assertThat( rule.isRightPath( tiles, 65, 64 ) ).isTrue();
