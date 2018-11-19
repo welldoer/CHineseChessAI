@@ -74,49 +74,28 @@ public class ChessBoard extends JPanel {
 		}
 		if( selectedPos != -1 ) {
 			Rule rule = new Rule();
-			Piece oldPiece = tiles.getPiece( selectedPos );
-			boolean boolCanMove = rule.hasDirectPath( oldPiece, pos );
-			if( boolCanMove ) {
-				boolCanMove = rule.isRightPath( tiles, selectedPos, pos );
-			}
-			if( selectedPos == pos )
+			boolean boolCanMove = rule.isRightPath( tiles, selectedPos, pos );
+			boolean boolCanReplace = ( tiles.getPiece( pos ) == null ||
+							tiles.getPiece( selectedPos ).getSide() != tiles.getPiece( pos ).getSide() );
+			if( selectedPos == pos )						/* 再次点击取消选中		*/
 				selectedPos = -1;
-			else if( tiles.getPiece( pos ) == null ) {
-				System.out.println( "1: Old pos: " + selectedPos + ", New pos: " + pos + "." );
-				if( boolCanMove ) {
-					tiles.movePiece( selectedPos, pos );
-					
-					movedPos = new int[ 2 ];
-					movedPos[ 0 ] = selectedPos;
-					movedPos[ 1 ] = pos;
-				} else {
+			else if( boolCanMove ) {						/* 可移动，包括无子或对方子	*/
+				tiles.movePiece( selectedPos, pos );
+				
+				movedPos = new int[ 2 ];
+				movedPos[ 0 ] = selectedPos;
+				movedPos[ 1 ] = pos;
+			} else if( boolCanReplace ){					/* 不可移动，且无子或对方子	*/
 					positions[ pos ].setSelected( false );
-				}
-			} else {
-				boolean booltmp = tiles.getPiece( selectedPos ).getSide() != tiles.getPiece( pos ).getSide();
-				boolean boolReplace = true;
-				System.out.println( "2: SelectPos: " + selectedPos + ", pos: " + pos + ", booltmp: " + booltmp );
-				if( booltmp ) {
-					if( boolCanMove ) {
-						boolCanMove = rule.isRightPath( tiles, selectedPos, pos );
-					}
-				} else {
-					positions[ selectedPos ].setSelected( false );
-					this.selectedPos = pos;
-					positions[ pos ].setSelected( true );
-				}
-				if( booltmp && boolCanMove && boolReplace ) {
-					tiles.movePiece( selectedPos, pos );
-										
-					movedPos = new int[ 2 ];
-					movedPos[ 0 ] = selectedPos;
-					movedPos[ 1 ] = pos;
-				}
+			} else {										/* 不可移动，但选中新的己子	*/
+				positions[ selectedPos ].setSelected( false );
+				this.selectedPos = pos;
+				positions[ pos ].setSelected( true );
 			}
-		} else if( tiles.getPiece( pos ) != null ) {
+		} else if( tiles.getPiece( pos ) != null ) {		/* 选中一个子				*/
 			this.selectedPos = pos;
 			positions[ pos ].setSelected( true );
-		} else {
+		} else {											/* 点击空白处				*/
 			this.selectedPos = -1;
 			positions[ pos ].setSelected( false );
 		}

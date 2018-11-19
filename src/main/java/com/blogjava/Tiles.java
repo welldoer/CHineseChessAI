@@ -32,7 +32,7 @@ public class Tiles {
 		return pieces[ pos ];
 	}
 
-	public Tiles movePiece( int oldPos, int newPos ) {
+	public boolean movePiece( int oldPos, int newPos ) {
 		boolean canMove = false;
 		
 		canMove = rule.isRightPath( this, oldPos, newPos );
@@ -46,7 +46,7 @@ public class Tiles {
 			}
 		}
 		
-		return this;
+		return canMove;
 	}
 
 }

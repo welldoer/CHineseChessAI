@@ -8,10 +8,6 @@
 
 
 #### 待开发任务清单
-~~1. 添加Tiles类来存放原有的Positions的非GUI信息，准备采用Tiles先建立与Position相同的功能调用代码，之后再剔除Position相关的代码；~~
+1. 优化现有的选子、吃子判断逻辑；
 
-~~2. 支持从FEN类加载棋局信息至Tiles，故Tiles成为无GUI显示的完整象棋；~~
-
-~~3. 后续再将ChessBoard基于Tiles来完成GUI显示；~~
-
-4. 在Rule规则类中支持步法的生成；
+2. 在Rule规则类中支持步法的生成；
