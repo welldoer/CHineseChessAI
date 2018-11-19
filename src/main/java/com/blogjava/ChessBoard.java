@@ -86,22 +86,17 @@ public class ChessBoard extends JPanel {
 		}
 		if( selectedPos != -1 ) {
 			Rule rule = new Rule();
-			Piece oldPiece = positions[ selectedPos ].getPiece();
+			Piece oldPiece = tiles.getPiece( selectedPos );
 			boolean boolCanMove = rule.hasDirectPath( oldPiece, pos );
-			boolean boolCanMov_;
 			if( boolCanMove ) {
-				boolCanMove = canMovePieceBetweenPositions( selectedPos, pos );
-				boolCanMov_ = rule.isRightPath( tiles, selectedPos, pos );
-				if( boolCanMove != boolCanMov_ ) {
-					System.out.println( "1: canMove: " + boolCanMove + ", canMov_: " + boolCanMov_ + "." );
-				}
+				boolCanMove = rule.isRightPath( tiles, selectedPos, pos );
 			}
 			if( selectedPos == pos )
 				selectedPos = -1;
-			else if( positions[ pos ].getPiece() == null ) {
+			else if( tiles.getPiece( pos ) == null ) {
 				System.out.println( "1: Old pos: " + selectedPos + ", New pos: " + pos + "." );
 				if( boolCanMove ) {
-					Piece piece = positions[ selectedPos ].getPiece();
+					Piece piece = positions[ selectedPos ].getPiece( );
 					piece.setPosInBoard( pos );
 					positions[ pos ].setPiece( piece );
 					positions[ selectedPos ].setPiece( null );
@@ -115,16 +110,12 @@ public class ChessBoard extends JPanel {
 					positions[ pos ].setSelected( false );
 				}
 			} else {
-				boolean booltmp = positions[ selectedPos ].getPiece().getSide() != positions[ pos ].getPiece().getSide();
+				boolean booltmp = tiles.getPiece( selectedPos ).getSide() != tiles.getPiece( pos ).getSide();
 				boolean boolReplace = true;
 				System.out.println( "2: SelectPos: " + selectedPos + ", pos: " + pos + ", booltmp: " + booltmp );
 				if( booltmp ) {
 					if( boolCanMove ) {
-						boolCanMove = canMovePieceBetweenPositions( selectedPos, pos );
-						boolCanMov_ = rule.isRightPath( tiles, selectedPos, pos );
-						if( boolCanMove != boolCanMov_ ) {
-							System.out.println( "2: canMove: " + boolCanMove + ", canMov_: " + boolCanMov_ + "." );
-						}
+						boolCanMove = rule.isRightPath( tiles, selectedPos, pos );
 					}
 				} else {
 					positions[ selectedPos ].setSelected( false );
@@ -155,69 +146,4 @@ public class ChessBoard extends JPanel {
 		repaint();
 	}
 
-	private boolean canMovePieceBetweenPositions(int selectedPos, int pos) {
-		boolean boolReplace = true;
-
-		int begin, end, inc;
-		begin = selectedPos;
-		end = pos;
-		inc = 1;
-		if( selectedPos > pos ) {
-			begin = pos;
-			end = selectedPos;
-		}
-		switch( positions[ selectedPos ].getPiece().getBasicType() ) {
-		case Rook:
-			if( end - begin >= 9 )
-				inc = 9;
-			for( int i = begin + inc; i < end; i += inc ) {
-				if( positions[ i ].getPiece() != null )
-					boolReplace = false;
-			}
-			break;
-		case Cannon:
-			if( end - begin >= 9 )
-				inc = 9;
-			int num = 0;
-			for( int i = begin + inc; i < end; i += inc ) {
-				if( positions[ i ].getPiece() != null )
-					num++;
-			}
-			if( num > 1 )
-				boolReplace = false;
-			break;
-		case Bishop:
-			System.out.println( "Bishop: " + ( begin + end ) / 2 + "." );
-			if( positions[ ( begin + end ) / 2 ].getPiece() != null )
-				boolReplace = false;
-			break;
-		case Knight:
-			int checkPos = 0;
-			switch( selectedPos - pos ) {
-			case 11:
-			case -7:
-				checkPos = selectedPos - 1;
-				break;
-			case 7:
-			case -11:
-				checkPos = selectedPos + 1;
-				break;
-			case 17:
-			case 19:
-				checkPos = selectedPos - 9;
-				break;
-			case -17:
-			case -19:
-				checkPos = selectedPos + 9;
-				break;
-			}
-			if( positions[ checkPos ].getPiece() != null )
-				boolReplace = false;
-			break;
-		default:
-			break;
-		}
-		
-		return boolReplace;
-	}
 }
