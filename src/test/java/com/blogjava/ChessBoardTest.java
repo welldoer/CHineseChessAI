@@ -61,29 +61,21 @@ public class ChessBoardTest {
 		chessBoard.loadFromFen( fenSimpleRecord );
 		window.panel( "position_0" ).requireVisible();
 		
-		Position[] positions = chessBoard.getPositions();
 		Tiles tiles = chessBoard.getTiles();
-		assertThat( positions[ 1 ].getPiece().getType() ).isEqualTo( PieceType.RookBlack );
 		assertThat( tiles.getPiece( 1 ).getType() ).isEqualTo( PieceType.RookBlack );
 		window.panel( "position_1" ).click();
 		assertThat( chessBoard.getSelectedPos() ).isEqualTo( 1 );
 //		window.dialog().button().click();
 		window.panel( "position_10" ).click();
-		assertThat( positions[ 1 ].getPiece() ).isNull();
 		assertThat( tiles.getPiece( 1 ) ).isNull();
-		assertThat( positions[ 10 ].getPiece().getType() ).isEqualTo( PieceType.RookBlack );
 		assertThat( tiles.getPiece( 10 ).getType() ).isEqualTo( PieceType.RookBlack );
 
 		window.panel( "position_10" ).click();
 		assertThat( chessBoard.getSelectedPos() ).isEqualTo( 10 );
-		assertThat( positions[ 10 ].getPiece().getType() ).isEqualTo( PieceType.RookBlack );
 		assertThat( tiles.getPiece( 10 ).getType() ).isEqualTo( PieceType.RookBlack );
-		assertThat( positions[ 28 ].getPiece().getType() ).isEqualTo( PieceType.KnightRed );
 		assertThat( tiles.getPiece( 28 ).getType() ).isEqualTo( PieceType.KnightRed );
 		window.panel( "position_28" ).click();
-		assertThat( positions[ 10 ].getPiece() ).isNull();
 		assertThat( tiles.getPiece( 10 ) ).isNull();;
-		assertThat( positions[ 28 ].getPiece().getType() ).isEqualTo( PieceType.RookBlack );
 		assertThat( tiles.getPiece( 28 ).getType() ).isEqualTo( PieceType.RookBlack );
 		
 		window.panel( "position_11" ).click();
