@@ -1,5 +1,8 @@
 package com.blogjava;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Rule {
 
 	public boolean hasDirectPath(Piece piece, int newPos) {
@@ -134,6 +137,68 @@ public class Rule {
 		}
 
 		return canPass;
+	}
+
+	public List<Integer> getBasicSteps( Piece piece ) {
+		List<Integer> ret = new ArrayList<>();
+		
+		switch( piece.getBasicType() ) {
+		case Rook:
+		case Cannon:
+			for( int i = 0; i < 9; i++ ) {
+				int tmp = piece.getPosInTiles() / 9 * 9 + i;
+				if( tmp != piece.getPosInTiles() )
+					ret.add( tmp );
+			}
+			for( int i = 0; i < 10; i++ ) {
+				int tmp = piece.getPosInTiles() % 9 + i * 9;
+				if( tmp != piece.getPosInTiles() )
+					ret.add( tmp );
+			}
+			break;
+		case Knight:
+			int[] incs_knight = { -19, -17, -11, -7, +7, +11, +17, +19 };
+			for( int inc : incs_knight ) {
+				int tmp = piece.getPosInTiles() + inc;
+				if( tmp >= 0 && tmp <= 89 )
+					ret.add( tmp );
+			}
+			break;
+		case Bishop:
+			int[] incs_bishop = { -20, -16, +16, +20 };
+			for( int inc : incs_bishop ) {
+				int tmp = piece.getPosInTiles() + inc;
+				if( tmp >= 0 && tmp <= 89 )
+					ret.add( tmp );
+			}
+			break;
+		case Advisor:
+			int[] incs_advisor = { -10, -8, +8, +10 };
+			for( int inc : incs_advisor ) {
+				int tmp = piece.getPosInTiles() + inc;
+				if( tmp >= 0 && tmp <= 89 )
+					ret.add( tmp );
+			}
+			break;
+		case King:
+			int[] incs_king = { -9, -1, +1, +9 };
+			for( int inc : incs_king ) {
+				int tmp = piece.getPosInTiles() + inc;
+				if( tmp >= 0 && tmp <= 89 )
+					ret.add( tmp );
+			}
+			break;
+		case Pawn:
+			int[] incs_pawn	= { -9, -1, +1, +9 };
+			for( int inc : incs_pawn ) {
+				int tmp = piece.getPosInTiles() + inc;
+				if( tmp >= 0 && tmp <= 89 )
+					ret.add( tmp );
+			}
+			break;
+		}
+		
+		return ret;
 	}
 
 }

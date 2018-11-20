@@ -2,6 +2,9 @@ package com.blogjava;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -204,5 +207,56 @@ public class RuleTest {
 		assertThat( tiles.getPiece(  1 ).getType() ).isEqualTo( PieceType.RookBlack );
 		tiles.movePiece( 64, 19 );
 		assertThat( tiles.getPiece( 19 ).getType() ).isEqualTo( PieceType.CannonRed );
+	}
+	
+	@Test
+	public void testGetBasicSteps() {
+		Piece piece = new Piece( PieceType.RookBlack, 20 );
+		List<Integer> ret = new ArrayList<>();
+		ret.add( 18 ); ret.add( 19 ); ret.add( 21 ); ret.add( 22 ); ret.add( 23 ); ret.add( 24 );
+		ret.add( 25 ); ret.add( 26 );
+		ret.add(  2 ); ret.add( 11 ); ret.add( 29 ); ret.add( 38 ); ret.add( 47 ); ret.add( 56 );
+		ret.add( 65 ); ret.add( 74 ); ret.add( 83 );
+		assertThat( rule.getBasicSteps( piece ) ).isEqualTo( ret );
+
+		piece = new Piece( PieceType.CannonBlack, 20 );
+		ret.clear();
+		ret.add( 18 ); ret.add( 19 ); ret.add( 21 ); ret.add( 22 ); ret.add( 23 ); ret.add( 24 );
+		ret.add( 25 ); ret.add( 26 );
+		ret.add(  2 ); ret.add( 11 ); ret.add( 29 ); ret.add( 38 ); ret.add( 47 ); ret.add( 56 );
+		ret.add( 65 ); ret.add( 74 ); ret.add( 83 );
+		assertThat( rule.getBasicSteps( piece ) ).isEqualTo( ret );
+
+		piece = new Piece( PieceType.KnightBlack, 20 );
+		ret.clear();
+		ret.add(  1 ); ret.add(  3 );
+		ret.add(  9 ); ret.add( 13 );
+		ret.add( 27 ); ret.add( 31 );
+		ret.add( 37 ); ret.add( 39 );
+		assertThat( rule.getBasicSteps( piece ) ).isEqualTo( ret );
+
+		piece = new Piece( PieceType.BishopBlack, 22 );
+		ret.clear();
+		ret.add(  2 ); ret.add(  6 );
+		ret.add( 38 ); ret.add( 42 );
+		assertThat( rule.getBasicSteps( piece ) ).isEqualTo( ret );
+
+		piece = new Piece( PieceType.AdvisorBlack, 13 );
+		ret.clear();
+		ret.add(  3 ); ret.add(  5 );
+		ret.add( 21 ); ret.add( 23 );
+		assertThat( rule.getBasicSteps( piece ) ).isEqualTo( ret );
+
+		piece = new Piece( PieceType.KingBlack, 13 );
+		ret.clear();
+		ret.add(  4 ); ret.add( 12 );
+		ret.add( 14 ); ret.add( 22 );
+		assertThat( rule.getBasicSteps( piece ) ).isEqualTo( ret );
+
+		piece = new Piece( PieceType.PawnBlack, 31 );
+		ret.clear();
+		ret.add( 22 ); ret.add( 30 );
+		ret.add( 32 ); ret.add( 40 );
+		assertThat( rule.getBasicSteps( piece ) ).isEqualTo( ret );
 	}
 }

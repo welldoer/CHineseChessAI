@@ -14,6 +14,7 @@ public class Tiles {
 	}
 
 	public Tiles loadFromFen( FenRecord fenRecord ) {
+		for( int i = 0; i < 90; i++ )		pieces[ i ] = null;
 		while( true ) {
 			Piece piece = fenRecord.fetchNextPiece();
 			if( piece != null ) {
