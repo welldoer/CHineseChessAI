@@ -73,29 +73,28 @@ public class ChessBoard extends JPanel {
 			selectedPos = -1;
 		}
 		if( selectedPos != -1 ) {
-			Rule rule = new Rule();
-			boolean boolCanMove = rule.isRightPath( tiles, selectedPos, pos );
-			boolean boolCanReplace = ( tiles.getPiece( pos ) == null ||
-							tiles.getPiece( selectedPos ).getSide() != tiles.getPiece( pos ).getSide() );
-			if( selectedPos == pos )						/* 再次点击取消选中		*/
+			if( selectedPos == pos )							/* 再次点击取消选中		*/
 				selectedPos = -1;
-			else if( boolCanMove ) {						/* 可移动，包括无子或对方子	*/
-				tiles.movePiece( selectedPos, pos );
-				
-				movedPos = new int[ 2 ];
-				movedPos[ 0 ] = selectedPos;
-				movedPos[ 1 ] = pos;
-			} else if( boolCanReplace ){					/* 不可移动，且无子或对方子	*/
+			else {
+				boolean boolCanReplace = ( tiles.getPiece( pos ) == null ||
+						tiles.getPiece( selectedPos ).getSide() != tiles.getPiece( pos ).getSide() );
+				boolean moved = tiles.movePiece( selectedPos, pos );	/* 尝试移动并记录结果	*/
+				if( moved ) {									/* 已移动完成				*/
+					movedPos = new int[ 2 ];
+					movedPos[ 0 ] = selectedPos;
+					movedPos[ 1 ] = pos;
+				} else if( boolCanReplace ){					/* 不可移动，且无子或对方子	*/
 					positions[ pos ].setSelected( false );
-			} else {										/* 不可移动，但选中新的己子	*/
-				positions[ selectedPos ].setSelected( false );
-				this.selectedPos = pos;
-				positions[ pos ].setSelected( true );
+				} else {										/* 不可移动，但选中新的己子	*/
+					positions[ selectedPos ].setSelected( false );
+					this.selectedPos = pos;
+					positions[ pos ].setSelected( true );
+				}
 			}
-		} else if( tiles.getPiece( pos ) != null ) {		/* 选中一个子				*/
+		} else if( tiles.getPiece( pos ) != null ) {			/* 选中一个子				*/
 			this.selectedPos = pos;
 			positions[ pos ].setSelected( true );
-		} else {											/* 点击空白处				*/
+		} else {												/* 点击空白处				*/
 			this.selectedPos = -1;
 			positions[ pos ].setSelected( false );
 		}
