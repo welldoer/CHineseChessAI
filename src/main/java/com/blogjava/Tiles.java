@@ -1,5 +1,8 @@
 package com.blogjava;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Tiles {
 	private ChessBoard chessBoard;
 	private Piece[] pieces = new Piece[ 90 ];
@@ -48,6 +51,22 @@ public class Tiles {
 		}
 		
 		return canMove;
+	}
+
+	public List<Integer> getAvailableSteps( PieceSide pieceSide ) {
+		List<Integer> steps = new ArrayList<>();
+		
+		for( Piece piece : pieces ) {
+			if( piece != null && piece.getSide() == pieceSide ) {
+				Step step = new Step( this, piece.getPosInTiles() );
+				List<Integer> tmp = step.getAvailableSteps();
+				for( Integer newPos : tmp ) {
+					steps.add( piece.getPosInTiles() * 100 + newPos );
+				}
+			}
+		}
+		
+		return steps;
 	}
 
 }
