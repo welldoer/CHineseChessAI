@@ -16,6 +16,7 @@ public class ChessBoard extends JPanel {
 	private Position[] positions;
 	private int selectedPos = -1;
 	private int[] movedPos;
+	private FenRecord fenRecord;
 	private Tiles tiles;
 	
 	public ChessBoard() {
@@ -38,10 +39,24 @@ public class ChessBoard extends JPanel {
 	}
 
 	public ChessBoard loadFromFen( FenRecord fenRecord ) {
+		this.fenRecord = fenRecord;
 		tiles.loadFromFen( fenRecord );
 		return this;
 	}
 	
+	public void restartGame() {
+		for( Position position : positions ) {
+			position.setSelected( false );
+			position.setImgPiece( null );
+		}
+		if( fenRecord != null ) {
+			fenRecord.restart();
+			loadFromFen( fenRecord );
+			
+			repaint();
+		}
+	}
+
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent( g );

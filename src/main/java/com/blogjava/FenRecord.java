@@ -22,6 +22,11 @@ public class FenRecord {
 		return isRedGo;
 	}
 
+	public void restart() {
+		idxFenSequence = 0;
+		posInBoard = 0;
+	}
+	
 	public Piece fetchNextPiece() {
 		Piece piece = null;
 		

@@ -1,14 +1,23 @@
 package com.blogjava;
 
+import java.awt.BorderLayout;
+
 import javax.swing.JFrame;
+
+import com.blogjava.ui.ControlPanel;
 
 @SuppressWarnings("serial")
 public class ChineseChessAI extends JFrame {
 	private ChessBoard chessBoard;
+	private ControlPanel controlPanel;
 	
 	public ChineseChessAI() {
+		setLayout( new BorderLayout() );
+		
 		chessBoard = new ChessBoard();
-		add( chessBoard );
+		controlPanel = new ControlPanel( chessBoard );
+		add( chessBoard, BorderLayout.CENTER );
+		add( controlPanel, BorderLayout.EAST );
 		
 		setResizable( false );
 		setVisible( true );
