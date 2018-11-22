@@ -36,7 +36,9 @@ public class ControlPanelTest {
 	public void testControlPanel() {
 		assertThat( controlPanel ).isNotNull();
 		window.button( "btnRestart" ).requireVisible();
+		window.radioButton( "btnRedAI" ).requireVisible();
 		assertThat( controlPanel.isRestarting() ).isEqualTo( false );
+		window.radioButton( "btnRedAI" ).click();
 		window.button( "btnRestart" ).click();
 		assertThat( controlPanel.isRestarting() ).isEqualTo( true );
 	}

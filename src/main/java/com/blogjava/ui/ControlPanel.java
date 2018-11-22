@@ -1,15 +1,12 @@
 package com.blogjava.ui;
 
-import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.function.IntPredicate;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
@@ -18,6 +15,8 @@ import com.blogjava.ChessBoard;
 @SuppressWarnings("serial")
 public class ControlPanel extends JPanel {
 	private ChessBoard chessBoard;
+	private JRadioButton btnRedAI;
+	private JRadioButton btnRedHB;
 	private JButton btnRestart;
 	private boolean isRestarting = false;
 
@@ -26,10 +25,11 @@ public class ControlPanel extends JPanel {
 		
 		setLayout( new GridLayout( 5, 1 ) );
 		
-		JRadioButton btnRedAI = new JRadioButton( "电脑红方先行" );
-		JRadioButton btnRedHB = new JRadioButton( "大哥红方先行" );
+		btnRedAI = new JRadioButton( "电脑红方先行" );
+		btnRedHB = new JRadioButton( "大哥红方先行" );
 		JRadioButton btnOther = new JRadioButton( "其他情况再说" );
 		ButtonGroup btnGroup = new ButtonGroup();
+		btnRedAI.setSelected( true );
 		btnGroup.add( btnRedAI );
 		btnGroup.add( btnRedHB );
 		btnGroup.add( btnOther );
@@ -38,6 +38,9 @@ public class ControlPanel extends JPanel {
 		choicePanel.add( btnRedAI );
 		choicePanel.add( btnRedHB );
 		choicePanel.add( btnOther );
+		btnRedAI.setName( "btnRedAI" );
+		btnRedHB.setName( "btnRedHB" );
+		btnOther.setName( "btnOther" );
 
 		btnRestart = new JButton( "重新开始" );
 		JButton btnUndo = new JButton( "悔棋" );
@@ -58,10 +61,14 @@ public class ControlPanel extends JPanel {
 		return isRestarting;
 	}
 	
-	public void restartGame() {
+	private boolean isRedAI() {
+		return btnRedAI.isSelected();
+	}
+	
+	public void restartGame( boolean isFirstAI ) {
 		isRestarting = true;
 		if( chessBoard != null )
-			chessBoard.restartGame();
+			chessBoard.restartGame( isFirstAI );
 	}
 	
 	class MouseMonitor extends MouseAdapter {
@@ -69,7 +76,8 @@ public class ControlPanel extends JPanel {
 		@Override
 		public void mousePressed( MouseEvent e ) {
 			if( e.getSource() == btnRestart ) {
-				restartGame();
+				System.out.println( "isRedAI: " + isRedAI() );
+				restartGame( isRedAI() );
 			}
 		}
 	}

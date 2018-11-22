@@ -6,6 +6,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.net.URL;
+import java.util.List;
 
 import javax.swing.JPanel;
 
@@ -44,7 +45,7 @@ public class ChessBoard extends JPanel {
 		return this;
 	}
 	
-	public void restartGame() {
+	public void restartGame( boolean isFirstAI ) {
 		for( Position position : positions ) {
 			position.setSelected( false );
 			position.setImgPiece( null );
@@ -52,6 +53,16 @@ public class ChessBoard extends JPanel {
 		if( fenRecord != null ) {
 			fenRecord.restart();
 			loadFromFen( fenRecord );
+			
+			repaint();
+		}
+		System.out.println( "isFirstAI: " + isFirstAI );
+		if( isFirstAI ) {
+			List<Integer> steps = tiles.getAvailableSteps( PieceSide.Red );
+			int oldPos = steps.get( 0 ) / 100;
+			int newPos = steps.get( 0 ) % 100;
+			System.out.println( "First step: " + steps.get( 0 ) );
+			tiles.movePiece( oldPos, newPos );
 			
 			repaint();
 		}
