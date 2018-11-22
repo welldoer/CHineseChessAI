@@ -58,6 +58,7 @@ public class ChessBoard extends JPanel {
 			positions[ cnt ] = position;
 			add( position );
 		}
+		selectedPos = -1;
 		updateUI();
 		repaint();
 		if( fenRecord != null ) {
@@ -66,13 +67,13 @@ public class ChessBoard extends JPanel {
 			
 			repaint();
 		}
-		System.out.println( "isFirstAI: " + isFirstAI );
 		if( isFirstAI ) {
 			List<Integer> steps = tiles.getAvailableSteps( PieceSide.Red );
 			int oldPos = steps.get( 0 ) / 100;
 			int newPos = steps.get( 0 ) % 100;
 			System.out.println( "First step: " + steps.get( 0 ) );
-			tiles.movePiece( oldPos, newPos );
+			clickPosition( oldPos );
+			clickPosition( newPos );
 			
 			repaint();
 		}
@@ -119,6 +120,7 @@ public class ChessBoard extends JPanel {
 					movedPos = new int[ 2 ];
 					movedPos[ 0 ] = selectedPos;
 					movedPos[ 1 ] = pos;
+					positions[ pos ].setSelected( true );
 				} else if( boolCanReplace ){					/* 不可移动，且无子或对方子	*/
 					positions[ pos ].setSelected( false );
 				} else {										/* 不可移动，但选中新的己子	*/
