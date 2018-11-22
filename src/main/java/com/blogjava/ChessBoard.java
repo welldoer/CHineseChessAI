@@ -46,10 +46,20 @@ public class ChessBoard extends JPanel {
 	}
 	
 	public void restartGame( boolean isFirstAI ) {
-		for( Position position : positions ) {
-			position.setSelected( false );
-			position.setImgPiece( null );
+		removeAll();
+		FlowLayout flowLayout = new FlowLayout();
+		flowLayout.setHgap( 0 );
+		flowLayout.setVgap( 0 );
+		setLayout( flowLayout );
+		positions = new Position[ 90 ];
+		for( int i = 0; i < 90; i++ ) {
+			int cnt = isFirstAI ? ( 89 -i ) : i;
+			Position position = new Position( this, cnt );
+			positions[ cnt ] = position;
+			add( position );
 		}
+		updateUI();
+		repaint();
 		if( fenRecord != null ) {
 			fenRecord.restart();
 			loadFromFen( fenRecord );
