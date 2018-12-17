@@ -2,7 +2,7 @@
 用TDD方法来开发一版中国象棋
 
 [![Build Status](https://travis-ci.com/welldoer/ChineseChessAI.svg?branch=master)](https://travis-ci.com/welldoer/ChineseChessAI)
-https://sonarcloud.io/api/project_badges/measure?project=welldoer_ChineseChessAI&metric=coverage
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=welldoer_ChineseChessAI&metric=coverage)](https://sonarcloud.io/dashboard?id=welldoer_ChineseChessAI)
 
 【说明】本开发过程严重参考 [JavaScript中国象棋程序（0） - 前言](http://www.cnblogs.com/royhoo/p/6426394.html)
 
