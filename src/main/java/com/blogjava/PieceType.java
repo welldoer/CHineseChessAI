@@ -1,13 +1,13 @@
 package com.blogjava;
 
 public enum PieceType {
-	KingRed			( 'K', "rk", "红帥", PieceBasicType.King,	PieceSide.Red	),
-	AdvisorRed		( 'A', "ra", "红仕", PieceBasicType.Advisor,	PieceSide.Red	),
-	BishopRed		( 'B', "rb", "红相", PieceBasicType.Bishop,	PieceSide.Red	),
-	KnightRed		( 'N', "rn", "红馬", PieceBasicType.Knight,	PieceSide.Red	),
-	RookRed			( 'R', "rr", "红車", PieceBasicType.Rook,	PieceSide.Red	),
-	CannonRed		( 'C', "rc", "红砲", PieceBasicType.Cannon,	PieceSide.Red	),
-	PawnRed			( 'P', "rp", "红兵", PieceBasicType.Pawn,	PieceSide.Red	),
+	KingRed			( 'K', "rk", "红帥", PieceBasicType.King,	PieceSide.RED	),
+	AdvisorRed		( 'A', "ra", "红仕", PieceBasicType.Advisor,	PieceSide.RED	),
+	BishopRed		( 'B', "rb", "红相", PieceBasicType.Bishop,	PieceSide.RED	),
+	KnightRed		( 'N', "rn", "红馬", PieceBasicType.Knight,	PieceSide.RED	),
+	RookRed			( 'R', "rr", "红車", PieceBasicType.Rook,	PieceSide.RED	),
+	CannonRed		( 'C', "rc", "红砲", PieceBasicType.Cannon,	PieceSide.RED	),
+	PawnRed			( 'P', "rp", "红兵", PieceBasicType.Pawn,	PieceSide.RED	),
 	KingBlack		( 'k', "bk", "黑将", PieceBasicType.King,	PieceSide.Black	),
 	AdvisorBlack	( 'a', "ba", "黑士", PieceBasicType.Advisor,	PieceSide.Black	),
 	BishopBlack		( 'b', "bb", "黑象", PieceBasicType.Bishop,	PieceSide.Black	),
@@ -62,6 +62,6 @@ enum PieceBasicType {
 }
 
 enum PieceSide {
-	Red,				/* 红方 */
+	RED,				/* 红方 */
 	Black,				/* 黑方 */
 }

@@ -19,7 +19,7 @@ public class PieceTest {
 	public void testPiece() {
 		assertThat( piece.getType() ).isEqualTo( PieceType.KingRed );
 		assertThat( piece.getBasicType() ).isEqualTo( PieceBasicType.King );
-		assertThat( piece.getSide() ).isEqualTo( PieceSide.Red );
+		assertThat( piece.getSide() ).isEqualTo( PieceSide.RED );
 		assertThat( piece.getPosInTiles() ).isEqualTo( 0 );
 	}
 

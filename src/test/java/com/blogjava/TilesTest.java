@@ -45,6 +45,6 @@ public class TilesTest {
 		lstSteps.add( 2809 );	lstSteps.add( 2811 );	lstSteps.add( 2821 );	lstSteps.add( 2839 );
 		lstSteps.add( 2845 );	lstSteps.add( 2847 );	lstSteps.add( 6253 );	lstSteps.add( 8576 );
 		lstSteps.add( 8584 );	lstSteps.add( 8586 );
-		assertThat( tiles.getAvailableSteps( PieceSide.Red ) ).isEqualTo( lstSteps );
+		assertThat( tiles.getAvailableSteps( PieceSide.RED ) ).isEqualTo( lstSteps );
 	}
 }

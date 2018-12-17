@@ -19,7 +19,7 @@ public class PieceTypeTest {
 		assertThat( pieceType.getGifName() ).isEqualTo( "rk" );
 		assertThat( pieceType.getName() ).isEqualTo( "红帥" );
 		assertThat( pieceType.getBasicType() ).isEqualTo( PieceBasicType.King );
-		assertThat( pieceType.getPieceSide() ).isEqualTo( PieceSide.Red );
+		assertThat( pieceType.getPieceSide() ).isEqualTo( PieceSide.RED );
 	}
 		
 	@Test

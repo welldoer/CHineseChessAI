@@ -68,7 +68,7 @@ public class ChessBoard extends JPanel {
 			repaint();
 		}
 		if( isFirstAI ) {
-			List<Integer> steps = tiles.getAvailableSteps( PieceSide.Red );
+			List<Integer> steps = tiles.getAvailableSteps( PieceSide.RED );
 			int oldPos = steps.get( 0 ) / 100;
 			int newPos = steps.get( 0 ) % 100;
 			System.out.println( "First step: " + steps.get( 0 ) );
