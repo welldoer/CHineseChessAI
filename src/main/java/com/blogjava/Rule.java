@@ -64,7 +64,8 @@ public class Rule {
 
 	public boolean isRightPath(Tiles tiles, int oldPos, int newPos) {
 		boolean canPass = false;
-		Piece oldPiece, newPiece;
+		Piece oldPiece;
+		Piece newPiece;
 
 		oldPiece = tiles.getPiece( oldPos );
 		newPiece = tiles.getPiece( newPos );
@@ -72,7 +73,9 @@ public class Rule {
 		if( newPiece == null || oldPiece.getSide() != newPiece.getSide() ) {
 			canPass = hasDirectPath( oldPiece, newPos );
 			if( canPass ) {
-				int begin, end, inc;
+				int begin;
+				int end;
+				int inc;
 				begin = oldPos;
 				end = newPos;
 				inc = 1;
