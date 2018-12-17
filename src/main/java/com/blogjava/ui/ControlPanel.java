@@ -76,7 +76,7 @@ public class ControlPanel extends JPanel {
 		@Override
 		public void mousePressed( MouseEvent e ) {
 			if( e.getSource() == btnRestart ) {
-				System.out.println( "isRedAI: " + isRedAI() );
+//				System.out.println( "isRedAI: " + isRedAI() );
 				restartGame( isRedAI() );
 			}
 		}

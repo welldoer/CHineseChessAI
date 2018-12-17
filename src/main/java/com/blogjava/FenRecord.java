@@ -5,17 +5,17 @@ public class FenRecord {
 	private String[] fenGroup;
 	private String fenSequence;
 	private boolean isRedGo;
-	private int currentPeaceStep;
-	private int totalStep;
+//	private int currentPeaceStep;
+//	private int totalStep;
 	private int idxFenSequence = 0;
 	private int posInBoard = 0;
 
 	public FenRecord( String strFen ) {
-		String[] fenGroup = strFen.split( " " );
+		fenGroup = strFen.split( " " );
 		fenSequence = fenGroup[ 0 ];
 		isRedGo = fenGroup[ 1 ].equals( "r" );
-		currentPeaceStep = Integer.parseInt( fenGroup[ 4 ] );
-		totalStep = Integer.parseInt( fenGroup[ 5 ] );
+//		currentPeaceStep = Integer.parseInt( fenGroup[ 4 ] );
+//		totalStep = Integer.parseInt( fenGroup[ 5 ] );
 	}
 
 	public boolean isRedGo() {

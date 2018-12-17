@@ -71,7 +71,7 @@ public class ChessBoard extends JPanel {
 			List<Integer> steps = tiles.getAvailableSteps( PieceSide.RED );
 			int oldPos = steps.get( 0 ) / 100;
 			int newPos = steps.get( 0 ) % 100;
-			System.out.println( "First step: " + steps.get( 0 ) );
+//			System.out.println( "First step: " + steps.get( 0 ) );
 			clickPosition( oldPos );
 			clickPosition( newPos );
 			
@@ -85,6 +85,7 @@ public class ChessBoard extends JPanel {
 		g.drawImage( imgBoard, 0, 0, this );
 	}
 	
+	@Override
 	public Dimension getPreferredSize() {
 		return new Dimension( 521, 577 );
 	}
