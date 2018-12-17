@@ -13,7 +13,7 @@ public class FenRecord {
 	public FenRecord( String strFen ) {
 		String[] fenGroup = strFen.split( " " );
 		fenSequence = fenGroup[ 0 ];
-		isRedGo = fenGroup[ 1 ].equals( "r" ) ? true : false;
+		isRedGo = fenGroup[ 1 ].equals( "r" );
 		currentPeaceStep = Integer.parseInt( fenGroup[ 4 ] );
 		totalStep = Integer.parseInt( fenGroup[ 5 ] );
 	}
