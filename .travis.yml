@@ -1,3 +1,11 @@
+addons:
+  sonarcloud:
+    organization: "welldoer-github"
+    token:
+      secure: "5c9c38ac1e8206b6db72cc69c6263aca4856c74c"
+script:
+  - sonar-scanner
+
 language: java
 before_script:
   - "export DISPLAY=:99.0"
