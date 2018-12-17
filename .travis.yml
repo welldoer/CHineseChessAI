@@ -7,6 +7,7 @@ script:
   - gradle check
   - ls -la /home/travis/build/welldoer/ChineseChessAI/
   - find /home/travis/build/welldoer/ChineseChessAI
+  - cat /home/travis/build/welldoer/ChineseChessAI/build/test-results/test/TEST-com.blogjava.TilesTest.xml
   - sonar-scanner
 
 language: java
