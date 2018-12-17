@@ -34,4 +34,10 @@ dependencies {
     testImplementation 'org.assertj:assertj-swing-junit:3.8.0'
 }
 
+jacocoTestReport {
+    reports {
+        html.enabled = true
+    }
+}
+
 mainClassName = 'ChineseChessAI'
