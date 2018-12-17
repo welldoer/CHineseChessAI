@@ -57,6 +57,8 @@ public class Rule {
 						( oldSide < 1 && ( diffPos == 1 || diffPos == 9 ) && newPos <= oldPos + 1 ) ) ) )
 				hasPath = true;
 			break;
+		default:
+			break;
 		}
 		
 		return hasPath;
@@ -124,6 +126,8 @@ public class Rule {
 					case -17:
 					case -19:
 						checkPos = oldPos + 9;
+						break;
+					default:
 						break;
 					}
 					if( tiles.getPiece( checkPos ) != null )
@@ -198,6 +202,8 @@ public class Rule {
 				if( tmp >= 0 && tmp <= 89 )
 					ret.add( tmp );
 			}
+			break;
+		default:
 			break;
 		}
 		

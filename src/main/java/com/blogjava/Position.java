@@ -58,6 +58,7 @@ public class Position extends JPanel {
 
 	class MouseMonitor extends MouseAdapter {
 
+		@Override
 		public void mousePressed( MouseEvent e ) {
 			isSelected = ! isSelected;
 			

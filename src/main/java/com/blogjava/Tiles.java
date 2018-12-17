@@ -25,8 +25,9 @@ public class Tiles {
 				pieces[ posInTiles ] = piece;
 				if( chessBoard != null )
 					chessBoard.getPositions()[ posInTiles ].setImgPiece( piece.getImage() );
-			} else
+			} else {
 				break;
+			}
 		}
 
 		return this;
