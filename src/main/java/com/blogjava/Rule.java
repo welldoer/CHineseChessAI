@@ -44,7 +44,7 @@ public class Rule {
 		case King:	/* 帅 */
 			if( ( diffCol == 0 || diffRow == 0 ) && diffCenter <= 1 &&
 					( ( piece.getType() == PieceType.KingBlack && newRow <= 2 ) ||
-						( piece.getType() == PieceType.KingRed && newRow >= 7 ) ) ) {
+						( piece.getType() == PieceType.KING_RED && newRow >= 7 ) ) ) {
 				hasPath = true;
 			}
 			break;

@@ -10,7 +10,7 @@ public class PieceTypeTest {
 
 	@Before
 	public void setUp() throws Exception {
-		pieceType = PieceType.KingRed;
+		pieceType = PieceType.KING_RED;
 	}
 
 	@Test

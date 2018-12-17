@@ -11,13 +11,13 @@ public class PieceTest {
 
 	@Before
 	public void setUp() throws Exception {
-		piece = new Piece( PieceType.KingRed, 0 );
+		piece = new Piece( PieceType.KING_RED, 0 );
 		rule = new Rule();
 	}
 
 	@Test
 	public void testPiece() {
-		assertThat( piece.getType() ).isEqualTo( PieceType.KingRed );
+		assertThat( piece.getType() ).isEqualTo( PieceType.KING_RED );
 		assertThat( piece.getBasicType() ).isEqualTo( PieceBasicType.King );
 		assertThat( piece.getSide() ).isEqualTo( PieceSide.RED );
 		assertThat( piece.getPosInTiles() ).isEqualTo( 0 );
@@ -113,11 +113,11 @@ public class PieceTest {
 		assertThat( rule.hasDirectPath( piece, 14 ) ).isEqualTo( true );
 		assertThat( rule.hasDirectPath( piece, 22 ) ).isEqualTo( true );
 		assertThat( rule.hasDirectPath( piece, 13 ) ).isEqualTo( false );
-		piece = new Piece( PieceType.KingRed, 67 );
+		piece = new Piece( PieceType.KING_RED, 67 );
 		assertThat( rule.hasDirectPath( piece, 66 ) ).isEqualTo( true );
 		assertThat( rule.hasDirectPath( piece, 68 ) ).isEqualTo( true );
 		assertThat( rule.hasDirectPath( piece, 76 ) ).isEqualTo( true );
-		piece = new Piece( PieceType.KingRed, 85 );
+		piece = new Piece( PieceType.KING_RED, 85 );
 		assertThat( rule.hasDirectPath( piece, 84 ) ).isEqualTo( true );
 		assertThat( rule.hasDirectPath( piece, 86 ) ).isEqualTo( true );
 		assertThat( rule.hasDirectPath( piece, 58 ) ).isEqualTo( false );

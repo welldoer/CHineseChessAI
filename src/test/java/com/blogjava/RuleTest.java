@@ -112,7 +112,7 @@ public class RuleTest {
 		assertThat( rule.hasDirectPath( piece, 14 ) ).isTrue();
 		assertThat( rule.hasDirectPath( piece, 22 ) ).isTrue();
 		
-		piece = new Piece( PieceType.KingRed, 76 );
+		piece = new Piece( PieceType.KING_RED, 76 );
 		assertThat( rule.hasDirectPath( piece, 67 ) ).isTrue();
 		assertThat( rule.hasDirectPath( piece, 75 ) ).isTrue();
 		assertThat( rule.hasDirectPath( piece, 77 ) ).isTrue();
@@ -128,7 +128,7 @@ public class RuleTest {
 		piece = new Piece( PieceType.KingBlack, 3 );
 		assertThat( rule.hasDirectPath( piece,   2 ) ).isFalse();
 		
-		piece = new Piece( PieceType.KingRed, 67 );
+		piece = new Piece( PieceType.KING_RED, 67 );
 		assertThat( rule.hasDirectPath( piece, 58 ) ).isFalse();
 	}
 

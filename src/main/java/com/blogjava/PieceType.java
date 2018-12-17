@@ -1,7 +1,7 @@
 package com.blogjava;
 
 public enum PieceType {
-	KingRed			( 'K', "rk", "红帥", PieceBasicType.King,	PieceSide.RED	),
+	KING_RED			( 'K', "rk", "红帥", PieceBasicType.King,	PieceSide.RED	),
 	AdvisorRed		( 'A', "ra", "红仕", PieceBasicType.Advisor,	PieceSide.RED	),
 	BishopRed		( 'B', "rb", "红相", PieceBasicType.Bishop,	PieceSide.RED	),
 	KnightRed		( 'N', "rn", "红馬", PieceBasicType.Knight,	PieceSide.RED	),

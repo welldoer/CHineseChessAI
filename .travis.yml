@@ -3,15 +3,16 @@ addons:
     organization: "welldoer-github"
     token:
       secure: "5c9c38ac1e8206b6db72cc69c6263aca4856c74c"
-script:
-  - gradle check
-  - ls -la /home/travis/build/welldoer/ChineseChessAI/
-  - find /home/travis/build/welldoer/ChineseChessAI
-  - cat /home/travis/build/welldoer/ChineseChessAI/build/test-results/test/TEST-com.blogjava.TilesTest.xml
-  - sonar-scanner
 
 language: java
 before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - sleep 3 # give xvfb some time to start
+
+script:
+  - gradle check
+#  - ls -la /home/travis/build/welldoer/ChineseChessAI/
+#  - find /home/travis/build/welldoer/ChineseChessAI
+#  - cat /home/travis/build/welldoer/ChineseChessAI/build/test-results/test/TEST-com.blogjava.TilesTest.xml
+  - sonar-scanner
