@@ -6,6 +6,7 @@ addons:
 script:
   - gradle check
   - ls -la /home/travis/build/welldoer/ChineseChessAI/
+  - ls -la /home/travis/build/welldoer/ChineseChessAI/build
   - sonar-scanner
 
 language: java
