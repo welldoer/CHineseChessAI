@@ -160,40 +160,40 @@ public class Rule {
 			}
 			break;
 		case KNIGHT:
-			int[] incs_knight = { -19, -17, -11, -7, +7, +11, +17, +19 };
-			for( int inc : incs_knight ) {
+			int[] incsKnight = { -19, -17, -11, -7, +7, +11, +17, +19 };
+			for( int inc : incsKnight ) {
 				int tmp = piece.getPosInTiles() + inc;
 				if( tmp >= 0 && tmp <= 89 )
 					ret.add( tmp );
 			}
 			break;
 		case BISHOP:
-			int[] incs_bishop = { -20, -16, +16, +20 };
-			for( int inc : incs_bishop ) {
+			int[] incsBishop = { -20, -16, +16, +20 };
+			for( int inc : incsBishop ) {
 				int tmp = piece.getPosInTiles() + inc;
 				if( tmp >= 0 && tmp <= 89 )
 					ret.add( tmp );
 			}
 			break;
 		case ADVISOR:
-			int[] incs_advisor = { -10, -8, +8, +10 };
-			for( int inc : incs_advisor ) {
+			int[] incsAdvisor = { -10, -8, +8, +10 };
+			for( int inc : incsAdvisor ) {
 				int tmp = piece.getPosInTiles() + inc;
 				if( tmp >= 0 && tmp <= 89 )
 					ret.add( tmp );
 			}
 			break;
 		case KING:
-			int[] incs_king = { -9, -1, +1, +9 };
-			for( int inc : incs_king ) {
+			int[] incsKing = { -9, -1, +1, +9 };
+			for( int inc : incsKing ) {
 				int tmp = piece.getPosInTiles() + inc;
 				if( tmp >= 0 && tmp <= 89 )
 					ret.add( tmp );
 			}
 			break;
 		case PAWN:
-			int[] incs_pawn	= { -9, -1, +1, +9 };
-			for( int inc : incs_pawn ) {
+			int[] incsPawn	= { -9, -1, +1, +9 };
+			for( int inc : incsPawn ) {
 				int tmp = piece.getPosInTiles() + inc;
 				if( tmp >= 0 && tmp <= 89 )
 					ret.add( tmp );
