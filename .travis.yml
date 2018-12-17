@@ -4,6 +4,7 @@ addons:
     token:
       secure: "5c9c38ac1e8206b6db72cc69c6263aca4856c74c"
 script:
+  - gradle ckeck
   - sonar-scanner
 
 language: java
