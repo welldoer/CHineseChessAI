@@ -18,18 +18,18 @@ public class PieceTypeTest {
 		assertThat( pieceType.getType() ).isEqualTo( 'K' );
 		assertThat( pieceType.getGifName() ).isEqualTo( "rk" );
 		assertThat( pieceType.getName() ).isEqualTo( "红帥" );
-		assertThat( pieceType.getBasicType() ).isEqualTo( PieceBasicType.King );
+		assertThat( pieceType.getBasicType() ).isEqualTo( PieceBasicType.KING );
 		assertThat( pieceType.getPieceSide() ).isEqualTo( PieceSide.RED );
 	}
 		
 	@Test
 	public void testAnotherPieceType() {
-		pieceType = PieceType.BishopBlack;
+		pieceType = PieceType.BISHOP_BLACK;
 		assertThat( pieceType.getType() ).isEqualTo( 'b' );
 		assertThat( pieceType.getGifName() ).isEqualTo( "bb" );
 		assertThat( pieceType.getName() ).isEqualTo( "黑象" );
-		assertThat( pieceType.getBasicType() ).isEqualTo( PieceBasicType.Bishop );
-		assertThat( pieceType.getPieceSide() ).isEqualTo( PieceSide.Black );
+		assertThat( pieceType.getBasicType() ).isEqualTo( PieceBasicType.BISHOP );
+		assertThat( pieceType.getPieceSide() ).isEqualTo( PieceSide.BLACK );
 	}
 
 }

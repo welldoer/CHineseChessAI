@@ -19,40 +19,40 @@ public class Rule {
 		int newRow = newPos / 9;
 
 		switch( piece.getBasicType() ) {
-		case Rook:		/* 车 */
-		case Cannon :	/* 炮 */
+		case ROOK:		/* 车 */
+		case CANNON :	/* 炮 */
 			if( diffCol == 0 || diffRow == 0 )
 				hasPath = true;
 			break;
-		case Knight:	/* 马 */
+		case KNIGHT:	/* 马 */
 			if( ( ( diffPos %  7 == 0 || diffPos % 11 == 0 ) && diffRow == 1 ) ||
 				( ( diffPos % 17 == 0 || diffPos % 19 == 0 ) && diffRow == 2 ) )
 				hasPath = true;
 			break;
-		case Bishop:	/* 相 */
+		case BISHOP:	/* 相 */
 			if( ( diffPos == 16 || diffPos == 20 ) && diffSide == 0 ) {
 				hasPath = true;
 			}
 			break;
-		case Advisor:	/* 士 */
+		case ADVISOR:	/* 士 */
 			if( ( diffPos == 8 || diffPos == 10 ) && diffCenter <= 1 &&
-					( ( piece.getType() == PieceType.AdvisorBlack && newRow <= 2 ) ||
-						( piece.getType() == PieceType.AdvisorRed && newRow >= 7 ) ) ) {
+					( ( piece.getType() == PieceType.ADVISOR_BLACK && newRow <= 2 ) ||
+						( piece.getType() == PieceType.ADVISOR_RED && newRow >= 7 ) ) ) {
 				hasPath = true;
 			}
 			break;
-		case King:	/* 帅 */
+		case KING:	/* 帅 */
 			if( ( diffCol == 0 || diffRow == 0 ) && diffCenter <= 1 &&
-					( ( piece.getType() == PieceType.KingBlack && newRow <= 2 ) ||
+					( ( piece.getType() == PieceType.KING_BLACK && newRow <= 2 ) ||
 						( piece.getType() == PieceType.KING_RED && newRow >= 7 ) ) ) {
 				hasPath = true;
 			}
 			break;
-		case Pawn:	/* 兵 */
-			if( ( ( piece.getType() == PieceType.PawnBlack ) &&
+		case PAWN:	/* 兵 */
+			if( ( ( piece.getType() == PieceType.PAWN_BLACK ) &&
 					( ( oldSide < 1 && diffPos == 9 && newPos > oldPos ) ||
 						( oldSide >= 1 && ( diffPos == 1 || diffPos == 9 ) && newPos >= oldPos - 1 ) ) ) ||
-				( ( piece.getType() == PieceType.PawnRed ) &&
+				( ( piece.getType() == PieceType.PAWN_RED ) &&
 					( ( oldSide >= 1 && diffPos == 9 && newPos < oldPos ) ||
 						( oldSide < 1 && ( diffPos == 1 || diffPos == 9 ) && newPos <= oldPos + 1 ) ) ) )
 				hasPath = true;
@@ -81,7 +81,7 @@ public class Rule {
 					end = oldPos;
 				}
 				switch( oldPiece.getBasicType() ) {
-				case Rook:
+				case ROOK:
 					if( end - begin >= 9 )
 						inc = 9;
 					for( int i = begin + inc; i < end; i += inc ) {
@@ -89,7 +89,7 @@ public class Rule {
 							canPass = false;
 					}
 					break;
-				case Cannon:
+				case CANNON:
 					if( end - begin >= 9 )
 						inc = 9;
 					int num = 0;
@@ -103,7 +103,7 @@ public class Rule {
 						( num > 1 ) )
 						canPass = false;
 					break;
-				case Knight:
+				case KNIGHT:
 					int checkPos = 0;
 					switch( oldPos - newPos ) {
 					case 11:
@@ -126,7 +126,7 @@ public class Rule {
 					if( tiles.getPiece( checkPos ) != null )
 						canPass = false;
 					break;
-				case Bishop:
+				case BISHOP:
 					if( tiles.getPiece( ( begin + end ) / 2 ) != null )
 						canPass = false;
 					break;
@@ -143,8 +143,8 @@ public class Rule {
 		List<Integer> ret = new ArrayList<>();
 		
 		switch( piece.getBasicType() ) {
-		case Rook:
-		case Cannon:
+		case ROOK:
+		case CANNON:
 			for( int i = 0; i < 9; i++ ) {
 				int tmp = piece.getPosInTiles() / 9 * 9 + i;
 				if( tmp != piece.getPosInTiles() )
@@ -156,7 +156,7 @@ public class Rule {
 					ret.add( tmp );
 			}
 			break;
-		case Knight:
+		case KNIGHT:
 			int[] incs_knight = { -19, -17, -11, -7, +7, +11, +17, +19 };
 			for( int inc : incs_knight ) {
 				int tmp = piece.getPosInTiles() + inc;
@@ -164,7 +164,7 @@ public class Rule {
 					ret.add( tmp );
 			}
 			break;
-		case Bishop:
+		case BISHOP:
 			int[] incs_bishop = { -20, -16, +16, +20 };
 			for( int inc : incs_bishop ) {
 				int tmp = piece.getPosInTiles() + inc;
@@ -172,7 +172,7 @@ public class Rule {
 					ret.add( tmp );
 			}
 			break;
-		case Advisor:
+		case ADVISOR:
 			int[] incs_advisor = { -10, -8, +8, +10 };
 			for( int inc : incs_advisor ) {
 				int tmp = piece.getPosInTiles() + inc;
@@ -180,7 +180,7 @@ public class Rule {
 					ret.add( tmp );
 			}
 			break;
-		case King:
+		case KING:
 			int[] incs_king = { -9, -1, +1, +9 };
 			for( int inc : incs_king ) {
 				int tmp = piece.getPosInTiles() + inc;
@@ -188,7 +188,7 @@ public class Rule {
 					ret.add( tmp );
 			}
 			break;
-		case Pawn:
+		case PAWN:
 			int[] incs_pawn	= { -9, -1, +1, +9 };
 			for( int inc : incs_pawn ) {
 				int tmp = piece.getPosInTiles() + inc;

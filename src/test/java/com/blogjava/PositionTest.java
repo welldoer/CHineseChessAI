@@ -45,7 +45,7 @@ public class PositionTest {
 
 	@Test
 	public void testOnePiece() {
-		piece = new Piece( PieceType.AdvisorBlack, 0 );
+		piece = new Piece( PieceType.ADVISOR_BLACK, 0 );
 		position.setImgPiece( piece.getImage() );
 
 		position.setOpaque( true );

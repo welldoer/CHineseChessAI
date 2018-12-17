@@ -1,20 +1,20 @@
 package com.blogjava;
 
 public enum PieceType {
-	KING_RED			( 'K', "rk", "红帥", PieceBasicType.King,	PieceSide.RED	),
-	AdvisorRed		( 'A', "ra", "红仕", PieceBasicType.Advisor,	PieceSide.RED	),
-	BishopRed		( 'B', "rb", "红相", PieceBasicType.Bishop,	PieceSide.RED	),
-	KnightRed		( 'N', "rn", "红馬", PieceBasicType.Knight,	PieceSide.RED	),
-	RookRed			( 'R', "rr", "红車", PieceBasicType.Rook,	PieceSide.RED	),
-	CannonRed		( 'C', "rc", "红砲", PieceBasicType.Cannon,	PieceSide.RED	),
-	PawnRed			( 'P', "rp", "红兵", PieceBasicType.Pawn,	PieceSide.RED	),
-	KingBlack		( 'k', "bk", "黑将", PieceBasicType.King,	PieceSide.Black	),
-	AdvisorBlack	( 'a', "ba", "黑士", PieceBasicType.Advisor,	PieceSide.Black	),
-	BishopBlack		( 'b', "bb", "黑象", PieceBasicType.Bishop,	PieceSide.Black	),
-	KnightBlack		( 'n', "bn", "黑馬", PieceBasicType.Knight,	PieceSide.Black	),
-	RookBlack		( 'r', "br", "黑車", PieceBasicType.Rook,	PieceSide.Black	),
-	CannonBlack		( 'c', "bc", "黑炮", PieceBasicType.Cannon,	PieceSide.Black	),
-	PawnBlack		( 'p', "bp", "黑卒", PieceBasicType.Pawn,	PieceSide.Black	);
+	KING_RED		( 'K', "rk", "红帥", PieceBasicType.KING,	PieceSide.RED	),
+	ADVISOR_RED		( 'A', "ra", "红仕", PieceBasicType.ADVISOR,	PieceSide.RED	),
+	BISHOP_RED		( 'B', "rb", "红相", PieceBasicType.BISHOP,	PieceSide.RED	),
+	KNIGHT_RED		( 'N', "rn", "红馬", PieceBasicType.KNIGHT,	PieceSide.RED	),
+	ROOK_RED		( 'R', "rr", "红車", PieceBasicType.ROOK,	PieceSide.RED	),
+	CANNON_RED		( 'C', "rc", "红砲", PieceBasicType.CANNON,	PieceSide.RED	),
+	PAWN_RED		( 'P', "rp", "红兵", PieceBasicType.PAWN,	PieceSide.RED	),
+	KING_BLACK		( 'k', "bk", "黑将", PieceBasicType.KING,	PieceSide.BLACK	),
+	ADVISOR_BLACK	( 'a', "ba", "黑士", PieceBasicType.ADVISOR,	PieceSide.BLACK	),
+	BISHOP_BLACK	( 'b', "bb", "黑象", PieceBasicType.BISHOP,	PieceSide.BLACK	),
+	KNIGHT_BLACK	( 'n', "bn", "黑馬", PieceBasicType.KNIGHT,	PieceSide.BLACK	),
+	ROOK_BLACK		( 'r', "br", "黑車", PieceBasicType.ROOK,	PieceSide.BLACK	),
+	CANNON_BLACK	( 'c', "bc", "黑炮", PieceBasicType.CANNON,	PieceSide.BLACK	),
+	PAWN_BLACK		( 'p', "bp", "黑卒", PieceBasicType.PAWN,	PieceSide.BLACK	);
 	
 	private char type;
 	private String gifName;
@@ -52,16 +52,16 @@ public enum PieceType {
 }
 
 enum PieceBasicType {
-	King,				/* 红帥, 黑将 */
-	Advisor,			/* 红仕, 黑士 */
-	Bishop,				/* 红相, 黑象 */
-	Knight,				/* 红馬, 黑馬 */
-	Rook,				/* 红車, 黑車 */
-	Cannon,				/* 红砲, 黑炮 */
-	Pawn,				/* 红兵, 黑卒 */
+	KING,				/* 红帥, 黑将 */
+	ADVISOR,			/* 红仕, 黑士 */
+	BISHOP,				/* 红相, 黑象 */
+	KNIGHT,				/* 红馬, 黑馬 */
+	ROOK,				/* 红車, 黑車 */
+	CANNON,				/* 红砲, 黑炮 */
+	PAWN,				/* 红兵, 黑卒 */
 }
 
 enum PieceSide {
 	RED,				/* 红方 */
-	Black,				/* 黑方 */
+	BLACK,				/* 黑方 */
 }

@@ -58,20 +58,20 @@ public class ChessBoardTest {
 		window.panel( "position_0" ).requireVisible();
 		
 		Tiles tiles = chessBoard.getTiles();
-		assertThat( tiles.getPiece( 1 ).getType() ).isEqualTo( PieceType.RookBlack );
+		assertThat( tiles.getPiece( 1 ).getType() ).isEqualTo( PieceType.ROOK_BLACK );
 		window.panel( "position_1" ).click();
 		assertThat( chessBoard.getSelectedPos() ).isEqualTo( 1 );
 		window.panel( "position_10" ).click();
 		assertThat( tiles.getPiece( 1 ) ).isNull();
-		assertThat( tiles.getPiece( 10 ).getType() ).isEqualTo( PieceType.RookBlack );
+		assertThat( tiles.getPiece( 10 ).getType() ).isEqualTo( PieceType.ROOK_BLACK );
 
 		window.panel( "position_10" ).click();
 		assertThat( chessBoard.getSelectedPos() ).isEqualTo( 10 );
-		assertThat( tiles.getPiece( 10 ).getType() ).isEqualTo( PieceType.RookBlack );
-		assertThat( tiles.getPiece( 28 ).getType() ).isEqualTo( PieceType.KnightRed );
+		assertThat( tiles.getPiece( 10 ).getType() ).isEqualTo( PieceType.ROOK_BLACK );
+		assertThat( tiles.getPiece( 28 ).getType() ).isEqualTo( PieceType.KNIGHT_RED );
 		window.panel( "position_28" ).click();
 		assertThat( tiles.getPiece( 10 ) ).isNull();;
-		assertThat( tiles.getPiece( 28 ).getType() ).isEqualTo( PieceType.RookBlack );
+		assertThat( tiles.getPiece( 28 ).getType() ).isEqualTo( PieceType.ROOK_BLACK );
 		
 		window.panel( "position_11" ).click();
 		assertThat( chessBoard.getSelectedPos() ).isEqualTo( 11 );
@@ -85,23 +85,23 @@ public class ChessBoardTest {
 		window.panel( "position_0" ).requireVisible();
 		
 		Tiles tiles = chessBoard.getTiles();
-		assertThat( tiles.getPiece( 65 ).getType() ).isEqualTo( PieceType.CannonRed );
+		assertThat( tiles.getPiece( 65 ).getType() ).isEqualTo( PieceType.CANNON_RED );
 		window.panel( "position_65" ).click();
 		assertThat( chessBoard.getSelectedPos() ).isEqualTo( 65 );
 		window.panel( "position_64" ).click();
-		assertThat( tiles.getPiece( 64 ).getType() ).isEqualTo( PieceType.CannonRed );
+		assertThat( tiles.getPiece( 64 ).getType() ).isEqualTo( PieceType.CANNON_RED );
 
 		window.panel( "position_64" ).click();
 		assertThat( chessBoard.getSelectedPos() ).isEqualTo( 64 );
-		assertThat( tiles.getPiece(  1 ).getType() ).isEqualTo( PieceType.RookBlack );
-		assertThat( tiles.getPiece( 19 ).getType() ).isEqualTo( PieceType.KnightBlack );
-		assertThat( tiles.getPiece( 28 ).getType() ).isEqualTo( PieceType.KnightRed );
+		assertThat( tiles.getPiece(  1 ).getType() ).isEqualTo( PieceType.ROOK_BLACK );
+		assertThat( tiles.getPiece( 19 ).getType() ).isEqualTo( PieceType.KNIGHT_BLACK );
+		assertThat( tiles.getPiece( 28 ).getType() ).isEqualTo( PieceType.KNIGHT_RED );
 		window.panel( "position_1" ).click();
-		assertThat( tiles.getPiece(  1 ).getType() ).isEqualTo( PieceType.RookBlack );
-		assertThat( tiles.getPiece( 64 ).getType() ).isEqualTo( PieceType.CannonRed );
+		assertThat( tiles.getPiece(  1 ).getType() ).isEqualTo( PieceType.ROOK_BLACK );
+		assertThat( tiles.getPiece( 64 ).getType() ).isEqualTo( PieceType.CANNON_RED );
 		window.panel( "position_19" ).click();
 		assertThat( tiles.getPiece( 64 ) ).isNull();;
-		assertThat( tiles.getPiece( 19 ).getType() ).isEqualTo( PieceType.CannonRed );
+		assertThat( tiles.getPiece( 19 ).getType() ).isEqualTo( PieceType.CANNON_RED );
 	}
 
 	@Test
@@ -115,16 +115,16 @@ public class ChessBoardTest {
 		window.panel( "position_2" ).click();
 		window.panel( "position_22" ).click();
 		assertThat( tiles.getPiece(  2 ) ).isNull();;
-		assertThat( tiles.getPiece( 22 ).getType() ).isEqualTo( PieceType.BishopBlack );
+		assertThat( tiles.getPiece( 22 ).getType() ).isEqualTo( PieceType.BISHOP_BLACK );
 		
 		window.panel( "position_22" ).click();
 		window.panel( "position_38" ).click();
 
 		window.panel( "position_38" ).click();
 		window.panel( "position_18" ).click();
-		assertThat( tiles.getPiece( 28 ).getType() ).isEqualTo( PieceType.KnightRed );
+		assertThat( tiles.getPiece( 28 ).getType() ).isEqualTo( PieceType.KNIGHT_RED );
 		assertThat( tiles.getPiece( 18 ) ).isNull();;
-		assertThat( tiles.getPiece( 38 ).getType() ).isEqualTo( PieceType.BishopBlack );
+		assertThat( tiles.getPiece( 38 ).getType() ).isEqualTo( PieceType.BISHOP_BLACK );
 	}
 
 	@Test
@@ -135,9 +135,9 @@ public class ChessBoardTest {
 		Tiles tiles = chessBoard.getTiles();
 
 		window.panel( "position_19" ).click();
-		assertThat( tiles.getPiece( 19 ).getType() ).isEqualTo( PieceType.KnightBlack );
+		assertThat( tiles.getPiece( 19 ).getType() ).isEqualTo( PieceType.KNIGHT_BLACK );
 		window.panel( "position_38" ).click();
-		assertThat( tiles.getPiece( 19 ).getType() ).isEqualTo( PieceType.KnightBlack );
+		assertThat( tiles.getPiece( 19 ).getType() ).isEqualTo( PieceType.KNIGHT_BLACK );
 		assertThat( tiles.getPiece( 38 ) ).isNull();;
 	}
 
@@ -149,7 +149,7 @@ public class ChessBoardTest {
 		Tiles tiles = chessBoard.getTiles();
 
 		window.panel( "position_29" ).click();
-		assertThat( tiles.getPiece( 29 ).getType() ).isEqualTo( PieceType.PawnBlack );
+		assertThat( tiles.getPiece( 29 ).getType() ).isEqualTo( PieceType.PAWN_BLACK );
 		window.panel( "position_38" ).click();
 
 		window.panel( "position_38" ).click();
@@ -157,7 +157,7 @@ public class ChessBoardTest {
 		
 		window.panel( "position_47" ).click();
 		window.panel( "position_46" ).click();
-		assertThat( tiles.getPiece( 46 ).getType() ).isEqualTo( PieceType.PawnBlack );
+		assertThat( tiles.getPiece( 46 ).getType() ).isEqualTo( PieceType.PAWN_BLACK );
 		assertThat( tiles.getPiece( 47 ) ).isNull();;
 	}
 
@@ -170,14 +170,14 @@ public class ChessBoardTest {
 
 		window.panel( "position_5" ).click();
 		window.panel( "position_13" ).click();
-		assertThat( tiles.getPiece( 13 ).getType() ).isEqualTo( PieceType.AdvisorBlack );
+		assertThat( tiles.getPiece( 13 ).getType() ).isEqualTo( PieceType.ADVISOR_BLACK );
 
 		window.panel( "position_14" ).click();
 		window.panel( "position_23" ).click();
-		assertThat( tiles.getPiece( 23 ).getType() ).isEqualTo( PieceType.KingBlack );
+		assertThat( tiles.getPiece( 23 ).getType() ).isEqualTo( PieceType.KING_BLACK );
 
 		window.panel( "position_23" ).click();
 		window.panel( "position_22" ).click();
-		assertThat( tiles.getPiece( 23 ).getType() ).isEqualTo( PieceType.KingBlack );
+		assertThat( tiles.getPiece( 23 ).getType() ).isEqualTo( PieceType.KING_BLACK );
 	}
 }

@@ -18,7 +18,7 @@ public class RuleTest {
 
 	@Test
 	public void testRuleRookBasicSteps() {
-		Piece piece = new Piece( PieceType.RookBlack, 40 );
+		Piece piece = new Piece( PieceType.ROOK_BLACK, 40 );
 		assertThat( rule.hasDirectPath( piece,  4 ) ).isTrue();
 		assertThat( rule.hasDirectPath( piece, 85 ) ).isTrue();
 		assertThat( rule.hasDirectPath( piece, 36 ) ).isTrue();
@@ -27,13 +27,13 @@ public class RuleTest {
 	
 	@Test
 	public void testRuleRookIncorrectSteps() {
-		Piece piece = new Piece( PieceType.RookBlack, 40 );
+		Piece piece = new Piece( PieceType.ROOK_BLACK, 40 );
 		assertThat( rule.hasDirectPath( piece,  3 ) ).isFalse();
 	}
 
 	@Test
 	public void testRuleKnightBasicSteps() {
-		Piece piece = new Piece( PieceType.KnightBlack, 22 );
+		Piece piece = new Piece( PieceType.KNIGHT_BLACK, 22 );
 		assertThat( rule.hasDirectPath( piece,  3 ) ).isTrue();
 		assertThat( rule.hasDirectPath( piece,  5 ) ).isTrue();
 		assertThat( rule.hasDirectPath( piece, 11 ) ).isTrue();
@@ -46,41 +46,41 @@ public class RuleTest {
 	
 	@Test
 	public void testRuleKnightIncorrectSteps() {
-		Piece piece = new Piece( PieceType.KnightBlack, 22 );
+		Piece piece = new Piece( PieceType.KNIGHT_BLACK, 22 );
 		assertThat( rule.hasDirectPath( piece,  2 ) ).isFalse();
 	}
 
 	@Test
 	public void testRuleBishopBasicSteps() {
-		Piece piece = new Piece( PieceType.BishopBlack, 22 );
+		Piece piece = new Piece( PieceType.BISHOP_BLACK, 22 );
 		assertThat( rule.hasDirectPath( piece,  2 ) ).isTrue();
 		assertThat( rule.hasDirectPath( piece,  6 ) ).isTrue();
 		assertThat( rule.hasDirectPath( piece, 38 ) ).isTrue();
 		assertThat( rule.hasDirectPath( piece, 42 ) ).isTrue();
 		
-		piece = new Piece( PieceType.BishopRed, 63 );
+		piece = new Piece( PieceType.BISHOP_RED, 63 );
 		assertThat( rule.hasDirectPath( piece, 47 ) ).isTrue();
 		assertThat( rule.hasDirectPath( piece, 83 ) ).isTrue();
 	}
 	
 	@Test
 	public void testRuleBishopIncorrectSteps() {
-		Piece piece = new Piece( PieceType.BishopBlack, 22 );
+		Piece piece = new Piece( PieceType.BISHOP_BLACK, 22 );
 		assertThat( rule.hasDirectPath( piece, 18 ) ).isFalse();
 
-		piece = new Piece( PieceType.BishopRed, 47 );
+		piece = new Piece( PieceType.BISHOP_RED, 47 );
 		assertThat( rule.hasDirectPath( piece, 31 ) ).isFalse();
 	}
 
 	@Test
 	public void testRuleAdvisorBasicSteps() {
-		Piece piece = new Piece( PieceType.AdvisorBlack, 13 );
+		Piece piece = new Piece( PieceType.ADVISOR_BLACK, 13 );
 		assertThat( rule.hasDirectPath( piece,  3 ) ).isTrue();
 		assertThat( rule.hasDirectPath( piece,  5 ) ).isTrue();
 		assertThat( rule.hasDirectPath( piece, 21 ) ).isTrue();
 		assertThat( rule.hasDirectPath( piece, 23 ) ).isTrue();
 		
-		piece = new Piece( PieceType.AdvisorRed, 76 );
+		piece = new Piece( PieceType.ADVISOR_RED, 76 );
 		assertThat( rule.hasDirectPath( piece, 66 ) ).isTrue();
 		assertThat( rule.hasDirectPath( piece, 68 ) ).isTrue();
 		assertThat( rule.hasDirectPath( piece, 84 ) ).isTrue();
@@ -89,24 +89,24 @@ public class RuleTest {
 	
 	@Test
 	public void testRuleAdvisorIncorrectSteps() {
-		Piece piece = new Piece( PieceType.AdvisorBlack, 13 );
+		Piece piece = new Piece( PieceType.ADVISOR_BLACK, 13 );
 		assertThat( rule.hasDirectPath( piece,  4 ) ).isFalse();
 		assertThat( rule.hasDirectPath( piece, 12 ) ).isFalse();
 		assertThat( rule.hasDirectPath( piece, 14 ) ).isFalse();
 		assertThat( rule.hasDirectPath( piece, 22 ) ).isFalse();
 
-		piece = new Piece( PieceType.AdvisorBlack, 3 );
+		piece = new Piece( PieceType.ADVISOR_BLACK, 3 );
 		assertThat( rule.hasDirectPath( piece,   4 ) ).isFalse();
 		assertThat( rule.hasDirectPath( piece,  11 ) ).isFalse();
 		assertThat( rule.hasDirectPath( piece,  12 ) ).isFalse();
 		
-		piece = new Piece( PieceType.AdvisorRed, 68 );
+		piece = new Piece( PieceType.ADVISOR_RED, 68 );
 		assertThat( rule.hasDirectPath( piece, 78 ) ).isFalse();
 	}
 
 	@Test
 	public void testRuleKingBasicSteps() {
-		Piece piece = new Piece( PieceType.KingBlack, 13 );
+		Piece piece = new Piece( PieceType.KING_BLACK, 13 );
 		assertThat( rule.hasDirectPath( piece,  4 ) ).isTrue();
 		assertThat( rule.hasDirectPath( piece, 12 ) ).isTrue();
 		assertThat( rule.hasDirectPath( piece, 14 ) ).isTrue();
@@ -121,11 +121,11 @@ public class RuleTest {
 	
 	@Test
 	public void testRuleKingIncorrectSteps() {
-		Piece piece = new Piece( PieceType.KingBlack, 13 );
+		Piece piece = new Piece( PieceType.KING_BLACK, 13 );
 		assertThat( rule.hasDirectPath( piece,  3 ) ).isFalse();
 		assertThat( rule.hasDirectPath( piece,  5 ) ).isFalse();
 
-		piece = new Piece( PieceType.KingBlack, 3 );
+		piece = new Piece( PieceType.KING_BLACK, 3 );
 		assertThat( rule.hasDirectPath( piece,   2 ) ).isFalse();
 		
 		piece = new Piece( PieceType.KING_RED, 67 );
@@ -134,29 +134,29 @@ public class RuleTest {
 
 	@Test
 	public void testRulePawnBasicSteps() {
-		Piece piece = new Piece( PieceType.PawnBlack, 27 );
+		Piece piece = new Piece( PieceType.PAWN_BLACK, 27 );
 		assertThat( rule.hasDirectPath( piece, 36 ) ).isTrue();
 		
-		piece = new Piece( PieceType.PawnBlack, 29 );
+		piece = new Piece( PieceType.PAWN_BLACK, 29 );
 		assertThat( rule.hasDirectPath( piece, 38 ) ).isTrue();
 
-		piece = new Piece( PieceType.PawnBlack, 46 );
+		piece = new Piece( PieceType.PAWN_BLACK, 46 );
 		assertThat( rule.hasDirectPath( piece, 45 ) ).isTrue();
 		assertThat( rule.hasDirectPath( piece, 47 ) ).isTrue();
 		assertThat( rule.hasDirectPath( piece, 55 ) ).isTrue();
 
-		piece = new Piece( PieceType.PawnRed, 58 );
+		piece = new Piece( PieceType.PAWN_RED, 58 );
 		assertThat( rule.hasDirectPath( piece, 49 ) ).isTrue();
 	}
 	
 	@Test
 	public void testRulePawnIncorrectSteps() {
-		Piece piece = new Piece( PieceType.PawnBlack, 29 );
+		Piece piece = new Piece( PieceType.PAWN_BLACK, 29 );
 		assertThat( rule.hasDirectPath( piece, 20 ) ).isFalse();
 		assertThat( rule.hasDirectPath( piece, 28 ) ).isFalse();
 		assertThat( rule.hasDirectPath( piece, 30 ) ).isFalse();
 
-		piece = new Piece( PieceType.PawnRed, 49 );
+		piece = new Piece( PieceType.PAWN_RED, 49 );
 		assertThat( rule.hasDirectPath( piece, 48 ) ).isFalse();
 	}
 	
@@ -202,16 +202,16 @@ public class RuleTest {
 		tiles.loadFromFen( fenSimpleRecord );
 		assertThat( rule.isRightPath( tiles, 65, 64 ) ).isTrue();
 		tiles.movePiece( 65, 64 );
-		assertThat( tiles.getPiece( 64 ).getType() ).isEqualTo( PieceType.CannonRed );
+		assertThat( tiles.getPiece( 64 ).getType() ).isEqualTo( PieceType.CANNON_RED );
 		tiles.movePiece( 64,  1 );
-		assertThat( tiles.getPiece(  1 ).getType() ).isEqualTo( PieceType.RookBlack );
+		assertThat( tiles.getPiece(  1 ).getType() ).isEqualTo( PieceType.ROOK_BLACK );
 		tiles.movePiece( 64, 19 );
-		assertThat( tiles.getPiece( 19 ).getType() ).isEqualTo( PieceType.CannonRed );
+		assertThat( tiles.getPiece( 19 ).getType() ).isEqualTo( PieceType.CANNON_RED );
 	}
 	
 	@Test
 	public void testGetBasicSteps() {
-		Piece piece = new Piece( PieceType.RookBlack, 20 );
+		Piece piece = new Piece( PieceType.ROOK_BLACK, 20 );
 		List<Integer> ret = new ArrayList<>();
 		ret.add( 18 ); ret.add( 19 ); ret.add( 21 ); ret.add( 22 ); ret.add( 23 ); ret.add( 24 );
 		ret.add( 25 ); ret.add( 26 );
@@ -219,7 +219,7 @@ public class RuleTest {
 		ret.add( 65 ); ret.add( 74 ); ret.add( 83 );
 		assertThat( rule.getBasicSteps( piece ) ).isEqualTo( ret );
 
-		piece = new Piece( PieceType.CannonBlack, 20 );
+		piece = new Piece( PieceType.CANNON_BLACK, 20 );
 		ret.clear();
 		ret.add( 18 ); ret.add( 19 ); ret.add( 21 ); ret.add( 22 ); ret.add( 23 ); ret.add( 24 );
 		ret.add( 25 ); ret.add( 26 );
@@ -227,7 +227,7 @@ public class RuleTest {
 		ret.add( 65 ); ret.add( 74 ); ret.add( 83 );
 		assertThat( rule.getBasicSteps( piece ) ).isEqualTo( ret );
 
-		piece = new Piece( PieceType.KnightBlack, 20 );
+		piece = new Piece( PieceType.KNIGHT_BLACK, 20 );
 		ret.clear();
 		ret.add(  1 ); ret.add(  3 );
 		ret.add(  9 ); ret.add( 13 );
@@ -235,25 +235,25 @@ public class RuleTest {
 		ret.add( 37 ); ret.add( 39 );
 		assertThat( rule.getBasicSteps( piece ) ).isEqualTo( ret );
 
-		piece = new Piece( PieceType.BishopBlack, 22 );
+		piece = new Piece( PieceType.BISHOP_BLACK, 22 );
 		ret.clear();
 		ret.add(  2 ); ret.add(  6 );
 		ret.add( 38 ); ret.add( 42 );
 		assertThat( rule.getBasicSteps( piece ) ).isEqualTo( ret );
 
-		piece = new Piece( PieceType.AdvisorBlack, 13 );
+		piece = new Piece( PieceType.ADVISOR_BLACK, 13 );
 		ret.clear();
 		ret.add(  3 ); ret.add(  5 );
 		ret.add( 21 ); ret.add( 23 );
 		assertThat( rule.getBasicSteps( piece ) ).isEqualTo( ret );
 
-		piece = new Piece( PieceType.KingBlack, 13 );
+		piece = new Piece( PieceType.KING_BLACK, 13 );
 		ret.clear();
 		ret.add(  4 ); ret.add( 12 );
 		ret.add( 14 ); ret.add( 22 );
 		assertThat( rule.getBasicSteps( piece ) ).isEqualTo( ret );
 
-		piece = new Piece( PieceType.PawnBlack, 31 );
+		piece = new Piece( PieceType.PAWN_BLACK, 31 );
 		ret.clear();
 		ret.add( 22 ); ret.add( 30 );
 		ret.add( 32 ); ret.add( 40 );
