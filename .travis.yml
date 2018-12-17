@@ -5,6 +5,7 @@ addons:
       secure: "5c9c38ac1e8206b6db72cc69c6263aca4856c74c"
 script:
   - gradle check
+  - ls -la /home/travis/build/welldoer/ChineseChessAI/
   - sonar-scanner
 
 language: java
