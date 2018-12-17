@@ -14,8 +14,8 @@ import javax.swing.JPanel;
 public class Position extends JPanel {
 	private ChessBoard chessBoard = null;
 	private int pos;
-	private URL urlImgPosition[];
-	private Image imgPosition[];
+	private URL[] urlImgPosition;
+	private Image[] imgPosition;
 	private boolean isSelected = false;
 	private Image imgPiece;
 	
