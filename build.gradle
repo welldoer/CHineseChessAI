@@ -5,7 +5,7 @@ plugins {
     // Apply the application plugin to add support for building an application
     id 'application'
 
-    id "org.sonarqube" version "2.6"
+    id "org.sonarqube" version "2.6.2"
 }
 
 // In this section you declare where to find the dependencies of your project
