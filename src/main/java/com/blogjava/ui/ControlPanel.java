@@ -61,10 +61,6 @@ public class ControlPanel extends JPanel {
 		return isRestarting;
 	}
 	
-	private boolean isRedAI() {
-		return btnRedAI.isSelected();
-	}
-	
 	public void restartGame( boolean isFirstAI ) {
 		isRestarting = true;
 		if( chessBoard != null )
@@ -76,7 +72,7 @@ public class ControlPanel extends JPanel {
 		@Override
 		public void mousePressed( MouseEvent e ) {
 			if( e.getSource() == btnRestart ) {
-				restartGame( isRedAI() );
+				restartGame( btnRedAI.isSelected() );
 			}
 		}
 	}
